@@ -1,12 +1,12 @@
 
 import './App.css'
+import Header from './components/Header'
 
 
 const App = () => {
   return (
     <>
-   <h1>Starting the project</h1>
-        
+ <Header/>
     </>
   )
 

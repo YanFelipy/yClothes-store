@@ -1,0 +1,36 @@
+.field_search {
+   display: flex;
+   width: 80%;
+   height: 30px;
+  border-radius: 32px;
+  border: 1px solid rgb(43, 43, 43);
+  padding: .1em .6em;
+  justify-content: space-between;
+
+}
+
+
+.field_search input {
+    width: 80%;
+background-color: transparent;
+border: 0px ;
+  color: black;
+  font-size: 1.2 em;
+  font-family: 'Poppins', sans-serif;
+  font-weight:4200;
+}
+.field_search input {
+    outline: none;
+}
+
+.field_search button{
+    background-color: inherit;
+    padding: .2em;
+}
+.svg_search {
+  display: flex;
+  background-color: inherit;
+  align-items: center;
+  justify-content: center;
+  padding: .2em .1em;
+}
