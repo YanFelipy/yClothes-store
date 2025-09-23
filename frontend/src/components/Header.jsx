@@ -2,10 +2,10 @@
 import styles from './Header.module.css'
 
 //assets
-import logo from '../assets/img/logo_yc.png'
-import heart from '../assets/img/heart-svgrepo-com.svg'
-import cart from '../assets/img/shopping-cart-01-svgrepo-com.svg'
-import accountsvg from '../assets/img/user-round-svgrepo-com.svg'
+import logo from '../assets/img/icons/logo_yc.png'
+import heart from '../assets/img/icons/heart-svgrepo-com.svg'
+import cart from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
+import accountsvg from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
 //components
 import Search from './Search'
 

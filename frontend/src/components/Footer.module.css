@@ -1,0 +1,149 @@
+footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 28vh;
+    position:absolute;;
+    bottom: 0px;
+    left: 0px;
+    min-height: 20vh;
+    border-top: .2px solid rgb(70, 70, 70);
+  
+  
+}
+
+.container_ft {
+    display: flex;
+    width: 100%;
+    flex-basis: auto;
+    padding: 1.2em;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.box_logo_and_info {
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+}
+
+.box_logo {
+    display: flex;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+}
+.box_logo h3 {
+    font-family: 'Source-serif';
+    font-size: 30px;
+    font-weight: 900;
+    color: black;
+    margin: 0px;
+}
+
+.box_info, .box_info a {
+    font-family: 'Source-serif';
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.box_info .list_info {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    color: black;
+    padding: 0px;
+text-align: start;
+text-transform: uppercase;
+
+}
+
+.navigation_ft {
+    display: flex;
+       font-family: 'Roboto';
+    font-weight: 600;
+    width: 25%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em;
+    padding: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+
+.ulcategories {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+        letter-spacing: 0.5px;
+        padding: 0px;
+}
+
+.box_icon {
+    height: 32px;
+    width: 32px;
+    object-fit: contain;
+display: flex;
+gap: 10px;
+}
+
+.box_icon img {
+    width: 100%;
+    object-fit: contain;
+    height: 100%;
+ 
+}
+
+.socials {
+    display: flex;
+    flex-direction: column;
+    padding: .8em;
+    gap: 25px
+}
+
+.box_card_rules {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    padding: 1em;
+
+}
+
+.we_accept {
+ color: black;
+ display: flex;
+align-items: center;
+ height: 50px;
+}
+
+.we_accept h4 {
+    text-transform: uppercase;
+    margin: 0px;
+    }
+
+.we_accept ul {
+    display: flex;
+    gap:20px;
+        padding: 1em;
+}
+
+.warranty {
+    color: black;
+    display: flex;
+}
+
+.card {
+    display: flex;
+    width: 32px;
+    height: 32px;
+}
+
+.card img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
