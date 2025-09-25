@@ -3,27 +3,28 @@ footer {
     align-items: center;
     width: 100%;
     height: 28vh;
-    position:absolute;;
+    position: absolute;
+    ;
     bottom: 0px;
     left: 0px;
     min-height: 20vh;
     border-top: .2px solid rgb(70, 70, 70);
-  
-  
+
+
 }
 
 .container_ft {
     display: flex;
     width: 100%;
-    flex-basis: auto;
+    flex-basis: 80%;
     padding: 1.2em;
     justify-content: center;
     align-items: center;
- 
+    flex: 1;
 }
 
 .box_logo_and_info {
-    width: 26%;
+    width: 20%;
     display: flex;
     flex-direction: column;
 }
@@ -34,6 +35,7 @@ footer {
     width: 60px;
     height: 60px;
 }
+
 .box_logo h3 {
     font-family: 'Source-serif';
     font-size: 30px;
@@ -42,7 +44,8 @@ footer {
     margin: 0px;
 }
 
-.box_info, .box_info a {
+.box_info,
+.box_info a {
     font-family: 'Source-serif';
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -54,20 +57,21 @@ footer {
     list-style: none;
     color: black;
     padding: 0px;
-text-align: start;
-text-transform: uppercase;
+    text-align: start;
+    text-transform: uppercase;
 
 }
 
 .navigation_ft {
     display: flex;
-       font-family: 'Roboto';
-    font-weight: 600;
-    width: 25%;
     align-items: center;
     justify-content: center;
-    gap: 0.6em;
-    padding: 1em;
+    font-family: 'Roboto';
+    font-weight: 600;
+    width: 30%;
+    margin: 0px 10px;
+
+
 }
 
 ul {
@@ -78,28 +82,33 @@ ul {
 .ulcategories {
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 1em;
-        letter-spacing: 0.5px;
-        padding: 0px;
+    letter-spacing: 0.5px;
+    padding: 0px;
+    margin: 0px;
 }
 
 .box_icon {
     height: 32px;
     width: 32px;
     object-fit: contain;
-display: flex;
-gap: 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .box_icon img {
     width: 100%;
     object-fit: contain;
     height: 100%;
- 
+
 }
 
 .socials {
+
     display: flex;
+    justify-content: center;
+    align-items: end;
     flex-direction: column;
     padding: .8em;
     gap: 25px
@@ -108,32 +117,41 @@ gap: 10px;
 .box_card_rules {
     display: flex;
     flex-direction: column;
+    min-width: 200px;
     width: 20%;
     padding: 1em;
 
 }
 
 .we_accept {
- color: black;
- display: flex;
-align-items: center;
- height: 50px;
+    color: black;
+    display: flex;
+    align-items: center;
+    height: 50px;
+    gap: 8px;
+
 }
 
 .we_accept h4 {
     text-transform: uppercase;
     margin: 0px;
-    }
+    flex-shrink: 0;
+}
 
 .we_accept ul {
     display: flex;
-    gap:20px;
-        padding: 1em;
+    gap: 20px;
+    padding: 0px;
+    min-width: fit-content;
+    flex-shrink: 1;
+    margin: 0px;
 }
 
 .warranty {
     color: black;
     display: flex;
+    min-width: fit-content;
+
 }
 
 .card {
@@ -142,8 +160,9 @@ align-items: center;
     height: 32px;
 }
 
-.card img{
+.card img {
     object-fit: contain;
     width: 100%;
     height: 100%;
+    flex-shrink: 2;
 }
