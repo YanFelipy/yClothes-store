@@ -1,3 +1,6 @@
+// Navigation
+import {Link } from 'react-router'
+
 //styles
 import styles from './Header.module.css'
 
@@ -12,11 +15,13 @@ import Search from './Search'
 const Header = () => {
   return (
    <header>
-    <div className={styles.box_logo}>
-<img src={logo}  alt="logo" className={styles.logotype} />
-    </div>
     
     <nav className={styles.navigations}>
+    <div className={styles.box_logo}>
+        <Link to="/">
+<img src={logo}  alt="logo" className={styles.logotype} />
+        </Link>
+    </div>
 <ul className={styles.ulcategories}>
     <li>
         <a href="">MEN</a>

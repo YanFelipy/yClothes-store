@@ -2,11 +2,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     gap: .2em;
     width: 100vw;
     height: 8vh;
     padding: .1em;
-    box-shadow: 0px 0px 10px 0px rgb(46, 46, 46);
+    box-shadow: 0px 0px 8px 0px rgb(69, 69, 69);
 }
 
 .box_logo {
@@ -15,14 +16,14 @@ header {
     height: 50px;
 }
 
-
-
 .navigations {
+    width: 70%;
     display: flex;
-    grid-row: 3;
+    justify-content: space-evenly;
+    align-items: center;
+    ;
     font-family: 'Roboto';
     font-weight: 600;
-    align-items: center;
     gap: 1em;
 }
 
@@ -34,18 +35,18 @@ ul {
 .ulcategories {
     display: flex;
     justify-content: center;
-    gap: 1em;
-        letter-spacing: 0.5px;
+    gap: 2em;
+    letter-spacing: 0.5px;
 }
 
 .search_box {
-    min-width: 400px;
+    min-width: 500px;
     display: flex;
 }
 
 .uloptionsuser {
     display: flex;
-    width: 100%;
+
     justify-content: center;
     padding: 2px;
     gap: 1em
@@ -55,12 +56,14 @@ ul {
     display: flex;
     align-items: center;
     gap: 5px;
-        letter-spacing: 0.5px;
+    letter-spacing: 0.5px;
 }
 
-.item_optuser a , .ulcategories a{
-font-weight: bold;
+.item_optuser a,
+.ulcategories a {
+    font-weight: bold;
 }
+
 .item_optuser .box_img {
     display: flex;
     align-items: center;
