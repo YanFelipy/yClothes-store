@@ -15,6 +15,47 @@ const Homepage = () => {
 </button>
 </div>
         </section>
+
+        <section className={styles.container_trendings}>
+<div className={styles.box_categories}>
+<div className={styles.kidsc}>
+      <div className={styles.name_category}>
+    <h2>
+     Kids
+      </h2>
+       <span>
+      Collection
+      </span> 
+      
+  </div>
+</div>
+<div className={styles.womanc}>
+    <div className={styles.name_category}>
+    <h2>
+      Woman's
+      </h2>
+       <span>
+      Collection
+      </span> 
+      
+  </div>
+  </div>
+
+<div className={styles.mensc}>
+     <div className={styles.name_category}>
+    <h2>
+     Men's
+      </h2>
+       <span>
+      Collection
+      </span> 
+      
+  </div>
+  </div>
+
+</div>
+
+        </section>
     </main>
   )
 }

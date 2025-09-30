@@ -64,7 +64,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Roboto';
+      font-family: 'Alan Sans', sans-serif;
     font-weight: 600;
     width: 30%;
     margin: 0px 10px;

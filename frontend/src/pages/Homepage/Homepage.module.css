@@ -1,19 +1,24 @@
 main {
     min-height: 80vh;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
 }
+
 .container_newcollections {
     width: 100vw;
-    height: 65vh;
+    height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: url('../../assets/img/hype/vytenis-malisauskas-CiPxyCRM9ck-unsplash 1.svg');
-    background-repeat:no-repeat;
-      background-size: cover;
-  background-position: 0px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: -20px;
 }
+
+.container_newcollections:hover {}
 
 .box_newArrivals {
     display: flex;
@@ -23,7 +28,7 @@ main {
     min-width: 35%;
     min-height: 40%;
     background-color: transparent;
-    
+
 }
 
 .box_newArrivals h2 {
@@ -38,15 +43,102 @@ main {
 .box_newArrivals button {
     width: 200px;
     height: 80px;
-background-color: transparent;
-outline: none;
-border: solid 1px white;
-padding: .8em;
-text-transform: uppercase;
+    background-color: transparent;
+    outline: none;
+    border: solid 1px white;
+    padding: .8em;
+    text-transform: uppercase;
     text-shadow: 1px 1px 10px 10px black;
     box-shadow: 1px 1px 30px 1px black;
 }
 
 .box_newArrivals button:hover {
     cursor: pointer;
+}
+
+.container_trendings {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+
+}
+
+.box_categories {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    gap: 20px;
+
+}
+
+.kidsc,
+.womanc,
+.mensc {
+    background-color: rgb(128, 128, 128);
+    min-width: 250px;
+    min-height: 60vh;
+    width: 24.5%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+}
+
+.kidsc:hover{
+ background-size: calc(60vh - 45%);
+   transition: 0.8s all ease-out;
+}
+.womanc:hover{
+       background-size: calc(60vh - 38%);
+   transition: 0.8s all ease-out;
+ }
+
+
+.mensc:hover {
+ background-size: calc(60vh - 30%);
+   transition: 0.8s all ease-out;
+ }
+
+.kidsc {
+    background-image: url(../../assets/img/hype/kin-li-a--1--Cmut8-unsplash.jpg);
+        background-size: calc(60vh - 32%);
+    background-position: center;
+    
+}
+
+.womanc {
+    background-image: url(../../assets/img/hype/dom-hill-nimElTcTNyY-unsplash.jpg);
+    background-size: calc(60vh - 32%);
+
+    background-position: center;
+}
+
+.mensc {
+    background-image: url(../../assets/img/hype//faiz-akbar-hwPvOd7pAS4-unsplash.jpg);
+    background-size: calc(60vh - 20%);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.name_category {
+    display: flex;
+flex-direction: column;
+     margin-bottom: 20px;
+     text-align: center;
+}
+
+
+.name_category h2, .name_category span {
+    margin: 0px;
+    font-size: 2em;
+    text-transform: uppercase;
+    font-family: 'Source Serif';
+    font-weight: 800;
+    text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.446);
 }

@@ -26,6 +26,7 @@ border: 0px ;
 .field_search button{
     background-color: inherit;
     padding: .2em;
+border: 0;
 }
 .svg_search {
   display: flex;

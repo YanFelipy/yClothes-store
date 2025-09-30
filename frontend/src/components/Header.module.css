@@ -22,8 +22,8 @@ header {
     justify-content: space-evenly;
     align-items: center;
     ;
-    font-family: 'Roboto';
-    font-weight: 600;
+    font-family: 'Alan Sans', sans-serif;
+    font-weight: 400;
     gap: 1em;
 }
 
