@@ -35,7 +35,7 @@ footer {
 }
 
 .box_logo h3 {
-    font-family: 'Source-serif';
+    font-family: 'Source-serif-pro';
     font-size: 30px;
     font-weight: 900;
     color: black;
@@ -44,7 +44,7 @@ footer {
 
 .box_info,
 .box_info a {
-    font-family: 'Source-serif';
+    font-family: 'Source-serif-pro';
     font-weight: 600;
     letter-spacing: 0.5px;
 }
@@ -64,7 +64,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-      font-family: 'Alan Sans', sans-serif;
+      font-family: 'Roboto', sans-serif;
     font-weight: 600;
     width: 30%;
     margin: 0px 10px;

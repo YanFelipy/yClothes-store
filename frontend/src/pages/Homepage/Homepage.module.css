@@ -48,6 +48,10 @@ main {
 }
 
 .box_newArrivals button {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 1em;
     width: 200px;
     height: 80px;
     background-color: transparent;
@@ -266,7 +270,9 @@ main {
 
 .btn_add,
 .btn_view {
-    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 100%;
     margin: 10px;
     padding: 15px 45px;
     text-align: center;
