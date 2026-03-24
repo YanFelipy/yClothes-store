@@ -4,11 +4,13 @@ import {useNavigate} from 'react-router'
 // ASSETS // 
 import imgTrend from '../../assets/img/product/gym_product_trend.jpg'
 
+
+
 const Homepage = () => {
 
   let navigate = useNavigate()
   return (
-    <main >
+    <main>
 
    {/* SECTION NEW COLLECTIONS */}
 
@@ -157,7 +159,13 @@ const Homepage = () => {
 </div>
 </section>
 
+
     </main>
+
+
+
+
+
   )
 }
 

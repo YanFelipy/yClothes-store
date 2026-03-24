@@ -1,0 +1,149 @@
+.containerModal {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+
+    width: 40%;
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 60vh;
+    border: 0px;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.boxModal {
+
+    display: flex;
+    position: relative;
+    padding: 10px;
+    width: 80%;
+
+
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formRegister {
+    display: flex;
+    flex-direction: column;
+}
+
+.introModal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.introModal img {
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+
+}
+
+.introModal h2 {
+    font-family: 'Source Serif Pro';
+    font-weight: bold;
+    font-size: 1.8em;
+    margin: 5px;
+}
+
+.introModal span {
+    font-family: 'Source-serif-pro';
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.507);
+    font-size: .5em;
+
+}
+
+.formRegister,
+.formRegister form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+
+}
+
+.labels {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source Serif Pro';
+    width: 100%;
+}
+
+.dualLabel {
+    display: flex ;
+    flex: 1;
+    
+    flex-wrap: wrap;
+    gap: 5px;
+    width: 100%;
+}
+
+.dualLabel label {
+    width: 49.2%;
+}
+
+.labels input {
+    border: 0.5px solid rgb(184, 184, 184);
+    border-radius: 4px;
+    min-height: 25px;
+
+}
+
+.submitForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.submitForm button {
+    background-image: linear-gradient(to right, #232526 0%,
+            #414345 51%, #232526 100%);
+}
+
+.submitForm button {
+    font-family: 'Source-serif-pro', sans-serif;
+    font-weight: bold;
+    width: 60%;
+    margin: 20px;
+    padding: 15px 45px;
+    text-align: center;
+    font-size: 1em;
+    letter-spacing: 1px;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.submitForm button:hover {
+    background-position: right center;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.modalOptions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Source-serif-pro';
+    justify-content: center;
+    align-items: start;
+}

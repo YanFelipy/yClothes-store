@@ -1,5 +1,8 @@
+// Hooks 
+
+
 // Navigation
-import {Link } from 'react-router'
+import {Link} from 'react-router'
 
 //styles
 import styles from './Header.module.css'
@@ -8,12 +11,16 @@ import styles from './Header.module.css'
 import logo from '../assets/img/icons/logo_yc.png'
 import heart from '../assets/img/icons/heart-svgrepo-com.svg'
 import cart from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
-import accountsvg from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
+import accountsvg from '../assets/img/icons/user-round-svgrepo-com.svg'
 //components
 import Search from './Search'
 
-const Header = () => {
-  return (
+
+
+const Header = (modalLoginEvent) => {
+    let userLogged = false
+    
+     return (
    <header>
     
     <nav className={styles.navigations}>
@@ -57,7 +64,14 @@ const Header = () => {
       <div className={styles.box_img}>
       <img src={accountsvg}  />
       </div>
-        <a href="">ACCOUNT</a>
+      
+      {userLogged ? <a href="">ACCOUNT</a> : 
+      
+        <button onClick={modalLoginEvent}>
+        SIGN-IN
+        </button>
+        }
+        
     </li>
 </ul>
     </nav>
