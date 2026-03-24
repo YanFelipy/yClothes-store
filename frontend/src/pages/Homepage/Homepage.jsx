@@ -77,14 +77,14 @@ const Homepage = () => {
 
 <div className={styles.product_trending}>
 
-  <div className={styles.product_details}>
+  <a className={styles.product_details}>
 
 <img src={imgTrend} className={styles.product_Image}/>
   <h3 className={styles.product_category}>Men's</h3>
   <p className={styles.product_name}>Gym set Black</p>
   <p className={styles.product_price}>80,00 $</p>
 
-  </div>
+  </a>
   <div className={styles.product_button}>
     <button className={styles.btn_add}> View</button>
     <button className={styles.btn_view}> add to cart</button>

@@ -55,6 +55,7 @@ main {
     width: 200px;
     height: 80px;
     background-color: transparent;
+    color: white;
     outline: none;
     border: solid 1px white;
     padding: .8em;
@@ -69,7 +70,7 @@ main {
 
 .container_categories {
     width: 100%;
-    min-height: 90vh;
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,12 +156,13 @@ main {
 
 .name_category h2,
 .name_category span {
+    color: white;
     margin: 0px;
     font-size: 2em;
     text-transform: uppercase;
     font-family: 'Roboto';
     font-weight: 600;
-    text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.446);
+    text-shadow: 1px 1px 12px rgba(10, 10, 10, 0.589);
 }
 
 .container_trendingnow {
@@ -169,9 +171,13 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
+ transition: 2s ease-out;
+    filter: grayscale();
     gap: 20px;
+}
+
+.container_trendingnow:hover {
+    filter: none;
 }
 
 .box_trending_now {
@@ -207,7 +213,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-  
+  padding: 10px 10px;
     
 }
 
