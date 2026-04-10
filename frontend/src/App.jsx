@@ -5,6 +5,7 @@ import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import ModalRegister from './components/RegisterModal'
+import LoginModal from './components/LoginModal'
 
 //Router
 import {BrowserRouter } from 'react-router'
@@ -15,6 +16,7 @@ const App = () => {
     <BrowserRouter>
  <Header/>
  <RoutePages />
+ <LoginModal />
  <ModalRegister />
  <Footer />
     </BrowserRouter>

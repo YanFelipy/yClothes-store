@@ -1,17 +1,17 @@
 
 
 // STYLES
-import styles from './RegisterModal.module.css'
+import styles from './LoginModal.module.css'
 
 
 //ASSETS
 import logo from '../assets/img/icons/logo_yc.png'
 
 
-const RegisterModal = () => {
+const LoginModal = () => {
 
 
-    const loginUser = (e) => {
+    const LoginUser = (e) => {
         e.preventDefault
     }
 
@@ -25,29 +25,15 @@ const RegisterModal = () => {
 
                 <div className={styles.introModal}>
                     <img src={logo} alt="" />
-                    <h2>Sign-up</h2>
+                    <h2>Sign-in</h2>
                     <span>For a better experience</span>
                 </div>
 
                 {/* FORMULARY */}
 
-                <div className={styles.formRegister}>
-                    <form onSubmit={loginUser}>
-
-
-                        <div className={styles.dualLabel}>
-
-                            <label className={styles.labels}>
-                                <span>Name:</span>
-                                <input type="text" />
-                            </label>
-
-                            <label className={styles.labels}>
-                                <span>Last name :</span>
-                                <input type="text" />
-                            </label>
-
-                        </div>
+                <div className={styles.formLogin}>
+                    <form onSubmit={LoginUser}>
+                       
                         <label className={styles.labels}>
                             <span>Email :</span>
                             <input type="email" />
@@ -58,16 +44,12 @@ const RegisterModal = () => {
                             <input type="password" />
                         </label>
 
-                        <label className={styles.labels}>
-                            <span>Confirm Password :</span>
-                            <input type="text" />
-                        </label>
-
+                        
 
                     </form>
                     <div className={styles.submitForm}>
                         <button>
-                            Register
+                            Login
                         </button>
                     </div>
 
@@ -86,4 +68,4 @@ const RegisterModal = () => {
     )
 }
 
-export default RegisterModal
+export default LoginModal

@@ -12,7 +12,7 @@
     border: 0px;
     box-shadow: 1px 1px 10px black;
     border-radius: 20px;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: start;
     flex-direction: column;
@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.formRegister {
+.formLogin {
     display: flex;
     flex-direction: column;
 }
@@ -65,8 +65,8 @@
 
 }
 
-.formRegister,
-.formRegister form {
+.formLogin,
+.formLogin form {
     display: flex;
     flex-direction: column;
     width: 100%;
