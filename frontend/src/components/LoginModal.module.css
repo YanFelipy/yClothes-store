@@ -1,39 +1,50 @@
-.containerModal {
+.modal {
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     z-index: 3;
-    width: 40%;
-    min-width: 300px;
-    max-width: 500px;
-    min-height: 60vh;
+    overflow: hidden;
+    min-width: 350px;
+    width: 400px;
+    max-width: 400px;
+    min-height: 50vh;
     border: 0px;
     box-shadow: 1px 1px 10px black;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: start;
+    justify-content: center;
     flex-direction: column;
+
 }
 
-.boxModal {
+.modal::backdrop {
+    background-color: rgba(56, 56, 56, 0.7);
+    backdrop-filter: blur(2px);
+    /* Opcional: dá um desfoque no fundo */
+}
 
+
+.boxModal {
     display: flex;
     position: relative;
     padding: 10px;
-    width: 80%;
-
-
+    width: 100%;
+    min-height: 55vh;
+    height: 100%;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
+    gap: 15px;
 }
+
 
 .formLogin {
     display: flex;
     flex-direction: column;
+    width: 60%;
 }
 
 .introModal {
@@ -41,6 +52,7 @@
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
+    width: 80%;
 }
 
 .introModal img {
@@ -82,9 +94,9 @@
 }
 
 .dualLabel {
-    display: flex ;
+    display: flex;
     flex: 1;
-    
+
     flex-wrap: wrap;
     gap: 5px;
     width: 100%;

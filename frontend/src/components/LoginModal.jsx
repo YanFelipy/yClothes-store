@@ -1,4 +1,6 @@
-
+//HOOKS
+import { useRef, useEffect } from 'react';
+import { useModals } from '../context/ModalContext';
 
 // STYLES
 import styles from './LoginModal.module.css'
@@ -10,16 +12,43 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 const LoginModal = () => {
 
+    //open modal
+
+    const { isLoginOpen, closeLogin } = useModals();
+    const dialogRef = useRef(null);
+
+
+    useEffect(() => {
+        const modal = dialogRef.current;
+        if (isLoginOpen) {
+            modal?.showModal();
+        } else {
+            modal?.close();
+        }
+    }, [isLoginOpen]);
+
+
+
+
+    if (!isLoginOpen) return null;
+
+
+    //login 
 
     const LoginUser = (e) => {
-        e.preventDefault
+        e.preventDefault()
     }
 
 
 
     return (
-        <dialog className={styles.containerModal}>
-            <div className={styles.boxModal}>
+        <dialog
+            ref={dialogRef}
+            className={styles.modal}
+            onClick={(e) => e.target === dialogRef.current && closeLogin()}
+        >
+
+            <div className={styles.boxModal} onClick={(e) => e.stopPropagation()}>
 
                 {/* INRO-MODAL */}
 
@@ -33,7 +62,7 @@ const LoginModal = () => {
 
                 <div className={styles.formLogin}>
                     <form onSubmit={LoginUser}>
-                       
+
                         <label className={styles.labels}>
                             <span>Email :</span>
                             <input type="email" />
@@ -44,7 +73,7 @@ const LoginModal = () => {
                             <input type="password" />
                         </label>
 
-                        
+
 
                     </form>
                     <div className={styles.submitForm}>

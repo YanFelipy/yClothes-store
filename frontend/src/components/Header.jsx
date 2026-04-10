@@ -1,5 +1,5 @@
 // Hooks 
-
+import { useModals } from '../context/ModalContext'
 
 // Navigation
 import {Link} from 'react-router'
@@ -17,8 +17,10 @@ import Search from './Search'
 
 
 
-const Header = (modalLoginEvent) => {
+const Header = () => {
     let userLogged = false
+const { openLogin } = useModals();
+   
     
      return (
    <header>
@@ -67,7 +69,7 @@ const Header = (modalLoginEvent) => {
       
       {userLogged ? <a href="">ACCOUNT</a> : 
       
-        <button onClick={modalLoginEvent}>
+        <button className={styles.btSignIn} onClick={openLogin}>
         SIGN-IN
         </button>
         }

@@ -1,4 +1,7 @@
+// Hooks
+import { ModalProvider } from './context/ModalContext'
 
+// Styles
 import './App.css'
 
 //Global Components
@@ -8,18 +11,22 @@ import ModalRegister from './components/RegisterModal'
 import LoginModal from './components/LoginModal'
 
 //Router
-import {BrowserRouter } from 'react-router'
+import { BrowserRouter } from 'react-router'
 import RoutePages from './routes/RoutePages'
 
 const App = () => {
   return (
-    <BrowserRouter>
- <Header/>
- <RoutePages />
- <LoginModal />
- <ModalRegister />
- <Footer />
-    </BrowserRouter>
+    <ModalProvider>
+
+      <BrowserRouter>
+        <Header />
+        <RoutePages />
+        <LoginModal />
+        <ModalRegister />
+        <Footer />
+      </BrowserRouter>
+
+    </ModalProvider>
   )
 
 }
