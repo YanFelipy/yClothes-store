@@ -14,7 +14,7 @@ const LoginModal = () => {
 
     //open modal
 
-    const { isLoginOpen, closeLogin } = useModals();
+    const { isLoginOpen, closeLogin , openRegister } = useModals();
     const dialogRef = useRef(null);
 
 
@@ -88,7 +88,16 @@ const LoginModal = () => {
 
                 <div className={styles.modalOptions}>
                     <a href=""> Forgot password?</a>
-                    <a href=""> Have a account? Sign in!</a>
+                    <a 
+                        href="#" 
+                        onClick={(e) => { 
+                            e.preventDefault(); 
+                            closeLogin(); 
+                            openRegister(); 
+                        }}
+                    > 
+                        Don't have an account? Sign up!
+                    </a>
                 </div>
 
 

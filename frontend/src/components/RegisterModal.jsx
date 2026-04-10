@@ -1,4 +1,5 @@
-
+import { useRef, useEffect } from 'react';
+import { useModals } from '../context/ModalContext';
 
 // STYLES
 import styles from './RegisterModal.module.css'
@@ -10,16 +11,41 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 const RegisterModal = () => {
 
+ const {isRegisterOpen, closeRegister, openLogin } = useModals();
+    const dialogRef = useRef(null);
 
-    const loginUser = (e) => {
+
+     useEffect(() => {
+        const modal = dialogRef.current;
+        if (isRegisterOpen) {
+            modal?.showModal();
+        } else {
+            modal?.close();
+        }
+    }, [isRegisterOpen]);
+
+
+
+
+    if (!isRegisterOpen) return null;
+
+
+    const registerUser = (e) => {
         e.preventDefault
     }
 
 
 
     return (
-        <dialog className={styles.containerModal}>
-            <div className={styles.boxModal}>
+ <dialog
+          
+ ref={dialogRef}
+            className={styles.modal}
+            onClick={(e) => e.target === dialogRef.current && closeRegister()}
+        >
+
+
+            <div className={styles.boxModal} onClick={(e) => e.stopPropagation()} >
 
                 {/* INRO-MODAL */}
 
@@ -32,7 +58,7 @@ const RegisterModal = () => {
                 {/* FORMULARY */}
 
                 <div className={styles.formRegister}>
-                    <form onSubmit={loginUser}>
+                    <form onSubmit={registerUser}>
 
 
                         <div className={styles.dualLabel}>
@@ -77,8 +103,21 @@ const RegisterModal = () => {
 
                 <div className={styles.modalOptions}>
                     <a href=""> Forgot password?</a>
-                    <a href=""> Have a account? Sign in!</a>
+                    
+
+                       <a 
+                        href="#" 
+                        onClick={(e) => { 
+                            e.preventDefault(); 
+                            closeRegister(); 
+                            openLogin(); 
+                        }}
+                    > 
+                       Have an account? Sign in!
+                    </a>
                 </div>
+
+
 
 
             </div>

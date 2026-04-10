@@ -1,4 +1,4 @@
-.containerModal {
+.modal {
     position: absolute;
     top: 0;
     right: 0;
@@ -12,10 +12,17 @@
     border: 0px;
     box-shadow: 1px 1px 10px black;
     border-radius: 20px;
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: start;
     flex-direction: column;
+    overflow: hidden;
+}
+
+.modal::backdrop {
+    background-color: rgba(56, 56, 56, 0.7);
+    backdrop-filter: blur(2px);
+   
 }
 
 .boxModal {
@@ -23,12 +30,11 @@
     display: flex;
     position: relative;
     padding: 10px;
-    width: 80%;
-
-
+    width: 90%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  
 }
 
 .formRegister {
