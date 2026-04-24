@@ -1,0 +1,113 @@
+.containersh {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.box_cartCheckout {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+.box_cartCheckout h2 {
+     font-family: 'Roboto' , sans-serif;
+}
+
+.boxitemsAndPrices {
+    display: flex;
+    justify-content: space-around;
+   
+
+}
+
+.cartItems {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    width: 50%;
+}
+
+
+
+.productCart {
+    width: 90%;
+    min-height: 18vh;
+    display: flex;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    border-radius: 30px;
+
+}
+
+.productDetails {
+    display: flex;
+    gap: 20px;
+
+}
+
+.imageProduct {
+    width: 250px;
+    object-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid grey;
+    border-radius: 30px;
+}
+
+.imageProduct img {
+    object-fit: contain;
+    width: 80%;
+    height: 80%;
+
+
+}
+
+.descProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 10px;
+}
+
+.descProduct h3 {
+    margin: 0px;
+    text-transform: uppercase;
+    font-family: 'Roboto' , sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.descProduct span {
+    color: grey;
+ font-family: 'Roboto' , sans-serif;
+    font-weight: 600;
+}
+
+.descProduct p {
+    color: black;
+    font-weight: bold;
+     font-family: 'Roboto' , sans-serif;
+}
+
+.checkout {
+    display: flex;
+    flex-direction: column;
+       width: 40%;
+ height: 100%;
+    border: 1px solid grey;
+      border-radius: 30px;
+
+}
+
+.checkoutPrices {
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+ 
+}
