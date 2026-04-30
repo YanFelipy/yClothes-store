@@ -1,4 +1,7 @@
 //ASSETS
+import paypal from '../../assets/img/icons/paypal-3-svgrepo-com.svg'
+ import visa from '../../assets/img/icons/visa-svgrepo-com.svg'
+ import mastercard from '../../assets/img/icons/mastercard-svgrepo-com.svg'
 
 // STYLES
 import styles from './ShoppingCart.module.css'
@@ -18,7 +21,7 @@ const ShoppingCart = () => {
                             <div className={styles.productDetails}>
                                 <div className={styles.imageProduct}>
                                     <img src={Sneaker} alt="" />
-                                    .
+                                    
                                 </div>
                                 <div className={styles.descProduct}>
                                     <h3>HANDBALL SPECIAL SHOE</h3>
@@ -36,21 +39,61 @@ const ShoppingCart = () => {
                             </div>
                         </div>
                     </div>
-                    
 
 
 
-                    <div className={styles.checkout}>
 
+                    <div className={styles.checkoutAndPayMethods}>
+
+    <div className={styles.checkout}>
                         <div className={styles.checkoutPrices}>
-                            <p>Order Amount : <span>200$</span></p>
-                            <p>Delivery : <span>20$</span></p>
-                                                        </div>
-                                                        <div className={styles.totalPrice}>
-                                                            <p>Total price: <span>220 $</span> </p>
-                                                        </div>
-                            
-                            
+                            <div className={styles.checkoutLabel}>
+                                <p>Order Amount : </p>
+                                <span>200$</span>
+                            </div>
+
+                        <div className={styles.checkoutLabel}>
+                                <p>Delivery : </p>
+                                <span>20$</span>
+                            </div>
+
+                        </div>
+                        <div className={styles.totalPrice}>
+                            <p>Total price:  </p>
+                            <span>220 $</span>
+                        </div>
+                        <div className={styles.submitCheckout}>
+                            <button className={styles.btn_check}> Checkout</button>
+                        </div>
+
+
+    
+</div>
+
+<div className={styles.boxPayMethods}>
+   <div className={styles.we_accept}>
+   
+                          
+   <div className={styles.box_brands_cards}>
+                                   <ul className={styles.accept_list}>
+                                       <li className={styles.card}>
+                                           <img src={mastercard} alt="" />
+                                       </li>
+   
+                                      <li className={styles.card}>
+                                           <img src={visa} alt="" />
+                                       </li>
+   
+                                       <li className={styles.card}>
+                                           <img src={paypal} alt="" />
+                                       </li>
+                                   </ul>
+                               </div>
+   
+                       </div>
+
+</div>
+
 
                     </div>
 
