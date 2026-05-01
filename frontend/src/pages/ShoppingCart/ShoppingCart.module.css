@@ -1,5 +1,6 @@
 .containersh {
-    min-height: 80vh;
+    min-height:
+        50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -91,15 +92,16 @@
     font-family: 'Roboto', sans-serif;
 }
 
- 
 
 
 
-.checkoutAndPayMethods ,.checkout {
+
+.checkoutAndPayMethods,
+.checkout {
     display: flex;
     flex-direction: column;
     width: 100%;
-    
+
     max-width: 400px;
     border: 1px solid grey;
     border-radius: 30px;
@@ -180,7 +182,7 @@
 }
 
 .box_brands_cards {
-margin: 10px;
+    margin: 20px;
 }
 
 .we_accept {
@@ -226,4 +228,118 @@ margin: 10px;
     width: 100%;
     height: 100%;
     flex-shrink: 2;
+}
+
+.containerRelProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+
+
+}
+
+.containerRelProducts h2 {
+    margin: 25px 0px;
+    font-family: 'Source-serif-pro', sans-serif;
+    font-size: 2rem;
+}
+
+.boxRelProducts {
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    gap: 50px;
+
+}
+
+.relProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 20%;
+    padding: 10px;
+
+}
+
+.boxRelProducts .relProduct img {
+    object-fit: contain;
+    width: 80%;
+    padding: 10%;
+    border: 1px black solid;
+    border-radius: 15px;
+}
+
+
+
+.boxRelProducts .relProduct h3 {
+    margin: 5px 0px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    padding: 0px 10px;
+
+}
+
+
+
+
+.boxRelProducts .relProduct p {
+    margin: 5px 0px;
+    padding: 0px 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    color: #868686;
+    font-weight: bolder;
+}
+
+
+.boxRelProducts .relProduct span {
+    margin: 5px 0px;
+    padding: 0px 10px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1em;
+    color: #343434;
+    font-weight: bolder;
+}
+
+.product_button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.product_button .btn_add {
+    background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
+}
+
+.product_button .btn_view {
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+}
+
+.btn_add,
+.btn_view {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 100%;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.btn_add:hover,
+.btn_view:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }

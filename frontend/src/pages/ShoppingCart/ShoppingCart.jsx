@@ -1,17 +1,18 @@
 //ASSETS
 import paypal from '../../assets/img/icons/paypal-3-svgrepo-com.svg'
- import visa from '../../assets/img/icons/visa-svgrepo-com.svg'
- import mastercard from '../../assets/img/icons/mastercard-svgrepo-com.svg'
+import visa from '../../assets/img/icons/visa-svgrepo-com.svg'
+import mastercard from '../../assets/img/icons/mastercard-svgrepo-com.svg'
 
 // STYLES
 import styles from './ShoppingCart.module.css'
 import Sneaker from '../../assets/img/product/sneaker.avif'
 const ShoppingCart = () => {
     return (
+        <>
         <section className={styles.containersh}>
             <div className={styles.box_cartCheckout}>
                 <div className={styles.textBox}>
-                    <h2>YOUR SHOPPING CART : <span>2</span></h2>
+                    <h2>YOUR SHOPPING CART : <span>1</span></h2>
                 </div>
 
                 <div className={styles.boxitemsAndPrices}>
@@ -103,8 +104,80 @@ const ShoppingCart = () => {
 
             </div>
 
-
         </section>
+
+<section className={styles.containerRelProducts}>
+<h2>Relationed Products</h2>
+<div className={styles.boxRelProducts}>
+
+{/* PRODUCT */}
+<div className={styles.relProduct}>
+<img src={Sneaker} alt="" />
+<h3>Men's</h3>
+<p>Sneaker Nike</p>
+<span>80,00 $</span>
+ <div className={styles.product_button}>
+    <button className={styles.btn_add}> View</button>
+    <button className={styles.btn_view}> add to cart</button>
+  </div>
+</div>
+
+{/* PRODUCT */}
+<div className={styles.relProduct}>
+<img src={Sneaker} alt="" />
+<h3>Men's</h3>
+<p>Sneaker Nike</p>
+<span>80,00 $</span>
+ <div className={styles.product_button}>
+    <button className={styles.btn_add}> View</button>
+    <button className={styles.btn_view}> add to cart</button>
+  </div>
+</div>
+
+{/* PRODUCT */}
+<div className={styles.relProduct}>
+<img src={Sneaker} alt="" />
+<h3>Men's</h3>
+<p>Sneaker Nike</p>
+<span>80,00 $</span>
+ <div className={styles.product_button}>
+    <button className={styles.btn_add}> View</button>
+    <button className={styles.btn_view}> add to cart</button>
+  </div>
+</div>
+
+{/* PRODUCT */}
+<div className={styles.relProduct}>
+<img src={Sneaker} alt="" />
+<h3>Men's</h3>
+<p>Sneaker Nike</p>
+<span>80,00 $</span>
+ <div className={styles.product_button}>
+    <button className={styles.btn_add}> View</button>
+    <button className={styles.btn_view}> add to cart</button>
+  </div>
+</div>
+
+{/* PRODUCT */}
+<div className={styles.relProduct}>
+<img src={Sneaker} alt="" />
+<h3>Men's</h3>
+<p>Sneaker Nike</p>
+<span>80,00 $</span>
+ <div className={styles.product_button}>
+    <button className={styles.btn_add}> View</button>
+    <button className={styles.btn_view}> add to cart</button>
+  </div>
+</div>
+
+
+
+</div>
+</section>
+
+</>
+
+
     )
 }
 
