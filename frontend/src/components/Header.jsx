@@ -48,12 +48,15 @@ const { openLogin } = useModals();
 <Search />
 </div>
 <ul className={styles.uloptionsuser}>
+
+    <Link to="/sh-cart">
     <li className={styles.item_optuser}>
          <div className={styles.box_img}>
         <img src={cart}  />
         </div>
         <a href="">CART</a>
     </li>
+    </Link>
 
  <li className={styles.item_optuser}>
      <div className={styles.box_img}>
