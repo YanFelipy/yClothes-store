@@ -1,28 +1,19 @@
-//requires
-const express = require('express')
-const path = require('path')
+// app.js
+const express = require('express');
 const cors = require('cors');
+const userRoutes = require('./routes/user.route');
 
-const connectDB = require('./config/db'); // connection to db
-const userRoutes = require('./routes/userRoutes'); // user route
+const app = express();
 
-const  port = 5000;
-const app = express()
+app.use(express.json());
+app.use(cors());
 
-// config JSON and form data response
+// Rotas
+app.use('/api/users', userRoutes);
 
-app.use(express.json())
-app.use(cors())
+//reqs
+app.get('/', (req, res) => {
+    res.send("API YClothes funcionando!");
+});
 
-connectDB();
-
-app.listen( port, ()=> {
-    console.log(`App rodando na porta: ${port}`)
-}
-)
-
-app.get('/' , (req, res) => {
-
-}
-)
-
+module.exports = app
