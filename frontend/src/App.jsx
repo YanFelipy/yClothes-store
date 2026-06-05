@@ -1,5 +1,9 @@
 // Hooks
 import { ModalProvider } from './context/ModalContext'
+import { ToastProvider } from './context/ToastContext';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 // Styles
 import './App.css'
@@ -16,17 +20,31 @@ import RoutePages from './routes/RoutePages'
 
 const App = () => {
   return (
+    <>
     <ModalProvider>
-
-      <BrowserRouter>
-        <Header />
-        <RoutePages />
-        <LoginModal />
-        <ModalRegister />
-        <Footer />
-      </BrowserRouter>
-
+      <ToastProvider  >
+        <BrowserRouter>
+          <Header />
+          <RoutePages />
+          <LoginModal />
+          <ModalRegister />
+          <Footer />
+        </BrowserRouter>
+      </ToastProvider>
     </ModalProvider>
+
+ <ToastContainer 
+              
+                hideProgressBar={false} 
+                newestOnTop 
+                closeOnClick 
+                pauseOnHover 
+             
+            />
+
+
+        </>
+    
   )
 
 }

@@ -22,11 +22,12 @@
 .modal::backdrop {
     background-color: rgba(56, 56, 56, 0.7);
     backdrop-filter: blur(2px);
+    position: absolute;
+    z-index: 0;
    
 }
 
 .boxModal {
-
     display: flex;
     position: relative;
     padding: 10px;

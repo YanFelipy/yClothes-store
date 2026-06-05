@@ -1,9 +1,9 @@
 import { useRef, useEffect, } from 'react';
 import { useModals } from '../context/ModalContext';
-import { userSchema } from '../validations/userValidation' // Importação do seu arquivo separado
+import { userSchema } from '../validations/userValidation'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-
+import { useToast } from '../context/ToastContext';
 
 // STYLES
 import styles from './RegisterModal.module.css'
@@ -13,25 +13,22 @@ import styles from './RegisterModal.module.css'
 import logo from '../assets/img/icons/logo_yc.png'
 
 
-
 const RegisterModal = () => {
-
+    const { showSuccess, showError } = useToast();
+    
     const { register,
         handleSubmit,
         formState: { errors } }
         = useForm({ resolver: yupResolver(userSchema) });
-
-    //register 
-
-    const registerUser = async (data) => {
-
-        url = "http://localhost:5000/api/users/register"
-
-        const UserData = { name, lastName, email, password }
-
-
-        try {
-            const response = await fetch(url, {
+        
+        //register 
+        
+        const registerUser = async (data) => {
+            
+                      
+            try {
+         
+            const response = await fetch("http://localhost:5000/api/users/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -42,18 +39,17 @@ const RegisterModal = () => {
             const resData = await response.json();
 
             if (response.ok) {
-                alert('Welcome to YClothes!');
-                closeRegister(); // Fecha o modal após sucesso
+                showSuccess("Conta criada com sucesso!");
+                
             } else {
-                alert(data.message || 'Erro ao cadastrar');
+                showError("Erro ao criar conta, tente novamente.");
             }
         } catch (error) {
             console.error('Erro na conexão:', error);
-            alert('Erro no servidor');
+            closeRegister()
+           showError("Erro ao criar conta, tente novamente mais tarde.");
         }
     };
-
-
 
 
     //modal
@@ -73,10 +69,6 @@ const RegisterModal = () => {
 
     if (!isRegisterOpen) return null;
 
-
-
-
-    
 
     return (
         <dialog
@@ -111,8 +103,8 @@ const RegisterModal = () => {
 
                                 <span>Last name :</span>
 
-                               <input {...register("lastName")} />
-                               <p>{errors.lastName?.message}</p>
+                                <input {...register("lastName")} />
+                                <p>{errors.lastName?.message}</p>
 
                             </label>
                         </div>
@@ -160,9 +152,6 @@ const RegisterModal = () => {
                         Have an account? Sign in!
                     </a>
                 </div>
-
-
-
 
             </div>
         </dialog>
