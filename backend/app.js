@@ -2,8 +2,9 @@
 const express = require('express')
 const path = require('path')
 const cors = require('cors');
-const { send } = require('process');
-const connectDB = require('./config/db');
+
+const connectDB = require('./config/db'); // connection to db
+const userRoutes = require('./routes/userRoutes'); // user route
 
 const  port = 5000;
 const app = express()
@@ -21,7 +22,7 @@ app.listen( port, ()=> {
 )
 
 app.get('/' , (req, res) => {
-res.send("hello node")
+
 }
 )
 
