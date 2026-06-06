@@ -24,30 +24,31 @@ const RegisterModal = () => {
         //register 
         
         const registerUser = async (data) => {
+            console.log(data)      
             
-                      
             try {
          
-            const response = await fetch("http://localhost:5000/api/users/register", {
+            const response = await fetch("http://localhost:4000/api/users/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(UserData)
+                body: JSON.stringify(data)
             })
 
             const resData = await response.json();
 
             if (response.ok) {
-                showSuccess("Conta criada com sucesso!");
+                showSuccess(resData.message);
+                  closeRegister()
                 
             } else {
-                showError("Erro ao criar conta, tente novamente.");
+                showError(resData.message);
             }
         } catch (error) {
             console.error('Erro na conexão:', error);
             closeRegister()
-           showError("Erro ao criar conta, tente novamente mais tarde.");
+           showError(resData.message);
         }
     };
 

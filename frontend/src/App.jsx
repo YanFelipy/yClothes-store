@@ -34,7 +34,7 @@ const App = () => {
     </ModalProvider>
 
  <ToastContainer 
-              autoClose={true}
+              autoClose={true, 2000}
                 hideProgressBar={false} 
                 newestOnTop 
                 closeOnClick 
