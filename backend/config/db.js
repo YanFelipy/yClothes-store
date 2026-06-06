@@ -9,7 +9,7 @@ dns.setServers([
 const connectDB = async () => {
   try {
     // Substitua a URL pela sua string de conexão real do MongoDB
-    await mongoose.connect('mongodb+srv://y4nfelipy:HlDmeavYP0mTtPiS@mynewcluster.vhkhcy5.mongodb.net/?appName=MyNewCluster');
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB conectado com sucesso!');
   } catch (error) {
     console.error('Erro ao conectar ao MongoDB:', error.message);
