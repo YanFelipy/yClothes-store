@@ -30,6 +30,7 @@ res.status(201).json({ message: "Usuário criado com sucesso!" });
 
 }
  catch (error) {
+    console.error("Erro no cadastro:", error);
     res.status(500).json({ message: "Erro no servidor, tente novamente." });
 }}
 
