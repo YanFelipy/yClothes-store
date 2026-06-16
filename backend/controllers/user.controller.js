@@ -2,7 +2,7 @@ const User = require('../models/user.model')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
-
+//user register
 exports.register = async (req, res) => {
 
     try {
@@ -36,8 +36,9 @@ exports.register = async (req, res) => {
     }
 }
 
-
-exports.login = async (rec, res) => {
+//user login
+exports.login = async (req, res) => {
+    
 
     try {
 
@@ -54,14 +55,17 @@ exports.login = async (rec, res) => {
             return res.status(400).json({ message: "Senha incorreta" })
         }
 
-        const token = JsonWebTokenError.sign((
+
+        const token =  jwt.sign(
             {
                 id: user.id,
                 role: user.role
             },
             process.env.JWT_SECRET,
             { expiresIn: '1h'}
-        ))
+        )
+
+        res.json({ message: "Login com sucesso!", token });
 
     } catch (error) {
         console.error(error)
