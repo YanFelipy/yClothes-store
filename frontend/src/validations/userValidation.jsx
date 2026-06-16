@@ -3,7 +3,7 @@ import * as yup from 'yup';
 // Regex para a senha
 const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-const userSchema = yup.object().shape({ 
+const userRegisterSchema = yup.object().shape({ 
     name: yup.string().required("Nome é obrigatório"), 
     lastName: yup.string().required("Sobrenome é obrigatório"),
     email: yup.string().email("E-mail inválido").required("E-mail é obrigatório"),
@@ -19,4 +19,11 @@ const userSchema = yup.object().shape({
         .required("Confirme sua senha")
 });
 
-export { userSchema };
+
+const userLoginSchema = yup.object().shape({ 
+    email: yup.string().email("E-mail inválido").required("E-mail é obrigatório"),
+    password: yup.string().required("Senha é obrigatória")
+  
+});
+
+export { userRegisterSchema, userLoginSchema };

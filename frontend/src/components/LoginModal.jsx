@@ -1,7 +1,10 @@
 //HOOKS
 import { useRef, useEffect } from 'react';
 import { useModals } from '../context/ModalContext';
-
+import { userLoginSchema } from '../validations/userValidation'
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm } from 'react-hook-form';
+import { useToast } from '../context/ToastContext';
 // STYLES
 import styles from './LoginModal.module.css'
 
@@ -11,10 +14,15 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 
 const LoginModal = () => {
+    //notifications
+    const { showSuccess, showError } = useToast();
 
-    //open modal
+    //states from form
+    const { register, handleSubmit,
+        formState: { errors } } = useForm({ resolver: yupResolver(userLoginSchema) });
 
-    const { isLoginOpen, closeLogin , openRegister } = useModals();
+    //open modal and close modal
+    const { isLoginOpen, closeLogin, openRegister } = useModals();
     const dialogRef = useRef(null);
 
 
@@ -35,8 +43,31 @@ const LoginModal = () => {
 
     //login 
 
-    const LoginUser = (e) => {
-        e.preventDefault()
+    const LoginUser = async (data) => {
+        console.log(data)
+
+        try {
+            const response = await fetch("http://localhost:4000/api/users/login", {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+
+             const resData = await response.json();
+
+            if (response.ok) {
+                showSuccess(resData.message)
+                closeLogin()
+            }
+
+        } catch (error) {
+          
+                showError(resData.message)
+                closeLogin()
+          
+        }
     }
 
 
@@ -61,26 +92,26 @@ const LoginModal = () => {
                 {/* FORMULARY */}
 
                 <div className={styles.formLogin}>
-                    <form onSubmit={LoginUser}>
+                    <form onSubmit={handleSubmit(LoginUser)}>
 
                         <label className={styles.labels}>
                             <span>Email :</span>
-                            <input type="email" />
+                           <input {...register("email")}/>
                         </label>
 
                         <label className={styles.labels}>
                             <span>Password :</span>
-                            <input type="password" />
+                            <input {...register("password")}/>
                         </label>
 
 
 
-                    </form>
                     <div className={styles.submitForm}>
-                        <button>
+                        <button type='submit'>
                             Login
                         </button>
                     </div>
+                    </form>
 
                 </div>
 
@@ -88,14 +119,14 @@ const LoginModal = () => {
 
                 <div className={styles.modalOptions}>
                     <a href=""> Forgot password?</a>
-                    <a 
-                        href="#" 
-                        onClick={(e) => { 
-                            e.preventDefault(); 
-                            closeLogin(); 
-                            openRegister(); 
+                    <a
+                        href="#"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            closeLogin();
+                            openRegister();
                         }}
-                    > 
+                    >
                         Don't have an account? Sign up!
                     </a>
                 </div>

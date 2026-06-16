@@ -1,6 +1,6 @@
 import { useRef, useEffect, } from 'react';
 import { useModals } from '../context/ModalContext';
-import { userSchema } from '../validations/userValidation'
+import { userRegisterSchema } from '../validations/userValidation'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useToast } from '../context/ToastContext';
@@ -15,19 +15,19 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 const RegisterModal = () => {
     const { showSuccess, showError } = useToast();
-    
+
     const { register,
         handleSubmit,
         formState: { errors } }
-        = useForm({ resolver: yupResolver(userSchema) });
-        
-        //register 
-        
-        const registerUser = async (data) => {
-            console.log(data)      
-            
-            try {
-         
+        = useForm({ resolver: yupResolver(userRegisterSchema) });
+
+    //register 
+
+    const registerUser = async (data) => {
+        console.log(data)
+
+        try {
+
             const response = await fetch("http://localhost:4000/api/users/register", {
                 method: 'POST',
                 headers: {
@@ -40,15 +40,15 @@ const RegisterModal = () => {
 
             if (response.ok) {
                 showSuccess(resData.message);
-                  closeRegister()
-                
+                closeRegister()
+
             } else {
                 showError(resData.message);
             }
         } catch (error) {
             console.error('Erro na conexão:', error);
             closeRegister()
-           showError(resData.message);
+            showError(resData.message);
         }
     };
 
