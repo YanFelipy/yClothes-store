@@ -1,4 +1,5 @@
 import { useContext, useState, useEffect, createContext } from 'react'
+import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext()
 
@@ -6,12 +7,27 @@ export default function authProvider({ children, value }) {
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        const token = localStorage.getItem('token')
+
+        const token = localStorage.getItem('token');
         if (token) {
-            // Aqui você poderia decodificar o token para pegar o role
-            setUser({ loggedIn: true }) 
+            const decoded = jwtDecode(token);
+            setUser(decoded);
+
         }
-    }, [])
+    }, []);
+
+
+    const login = (token) => {
+        localStorage.setItem('token', token);
+        const decoded = jwtDecode(token);
+        setUser(decoded);
+    };
+
+    const logout = () => {
+        localStorage.removeItem('token');
+        setUser(null);
+    };
+
 
     return (
         <AuthContext.Provider value={{ user, setUser }}>

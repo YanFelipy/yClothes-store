@@ -2,6 +2,7 @@
 import { ModalProvider } from './context/ModalContext'
 import { ToastProvider } from './context/ToastContext';
 import { ToastContainer } from 'react-toastify';
+import { useAuthValue } from './context/AuthContext';
 import 'react-toastify/dist/ReactToastify.css'
 
 
@@ -19,32 +20,41 @@ import { BrowserRouter } from 'react-router'
 import RoutePages from './routes/RoutePages'
 
 const App = () => {
+
+
   return (
     <>
-    <ModalProvider>
-      <ToastProvider  >
-        <BrowserRouter>
-          <Header />
-          <RoutePages />
-          <LoginModal />
-          <ModalRegister />
-          <Footer />
-        </BrowserRouter>
-      </ToastProvider>
-    </ModalProvider>
-
- <ToastContainer 
-              autoClose={true, 2000}
-                hideProgressBar={false} 
-                newestOnTop 
-                closeOnClick 
-                pauseOnHover 
-             
-            />
+      <ModalProvider>
+        <AuthProvider value={{ user }}>
+          <ToastProvider  >
 
 
-        </>
-    
+            <BrowserRouter>
+
+              <Header />
+              <RoutePages />
+              <LoginModal />
+              <ModalRegister />
+              <Footer />
+            </BrowserRouter>
+
+
+          </ToastProvider>
+        </AuthProvider>
+      </ModalProvider>
+
+      <ToastContainer
+        autoClose={true, 2000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        pauseOnHover
+
+      />
+
+
+    </>
+
   )
 
 }

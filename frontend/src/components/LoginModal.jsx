@@ -5,6 +5,10 @@ import { userLoginSchema } from '../validations/userValidation'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useToast } from '../context/ToastContext';
+import { useAuthValue } from '../context/AuthContext';
+
+
+
 // STYLES
 import styles from './LoginModal.module.css'
 
@@ -14,6 +18,7 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 
 const LoginModal = () => {
+    const { login } = useAuthValue();
     //notifications
     const { showSuccess, showError } = useToast();
 
@@ -56,6 +61,9 @@ const LoginModal = () => {
             })
 
              const resData = await response.json();
+
+             if (json.token) {
+        login(json.token);
 
             if (response.ok) {
                 showSuccess(resData.message)
