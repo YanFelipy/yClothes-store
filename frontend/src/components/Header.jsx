@@ -1,5 +1,6 @@
 // Hooks 
 import { useModals } from '../context/ModalContext'
+import { useAuthValue } from '../context/AuthContext'
 
 // Navigation
 import {Link} from 'react-router'
@@ -20,6 +21,9 @@ import Search from './Search'
 const Header = () => {
     let userLogged = false
 const { openLogin } = useModals();
+
+  const { user } = useAuthValue()
+
    
     
      return (
@@ -70,7 +74,7 @@ const { openLogin } = useModals();
       <img src={accountsvg}  />
       </div>
       
-      {userLogged ? <a href="">ACCOUNT</a> : 
+      {user ? <a href="">ACCOUNT</a> : 
       
         <button className={styles.btSignIn} onClick={openLogin}>
         SIGN-IN

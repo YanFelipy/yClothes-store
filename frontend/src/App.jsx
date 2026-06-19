@@ -2,7 +2,7 @@
 import { ModalProvider } from './context/ModalContext'
 import { ToastProvider } from './context/ToastContext';
 import { ToastContainer } from 'react-toastify';
-import { useAuthValue } from './context/AuthContext';
+import AuthProvider from './context/AuthContext';
 import 'react-toastify/dist/ReactToastify.css'
 
 
@@ -24,8 +24,9 @@ const App = () => {
 
   return (
     <>
+        <AuthProvider >
+          
       <ModalProvider>
-        <AuthProvider value={{ user }}>
           <ToastProvider  >
 
 
@@ -40,7 +41,6 @@ const App = () => {
 
 
           </ToastProvider>
-        </AuthProvider>
       </ModalProvider>
 
       <ToastContainer
@@ -49,10 +49,11 @@ const App = () => {
         newestOnTop
         closeOnClick
         pauseOnHover
+        
+        />
 
-      />
 
-
+        </AuthProvider>
     </>
 
   )

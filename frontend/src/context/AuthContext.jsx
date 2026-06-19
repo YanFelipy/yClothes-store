@@ -29,11 +29,11 @@ export default function authProvider({ children, value }) {
     };
 
 
-    return (
-        <AuthContext.Provider value={{ user, setUser }}>
+   return (
+        <AuthContext.Provider value={{ user, login, logout }}>
             {children}
         </AuthContext.Provider>
-    )
+    );
 }
 
 export function useAuthValue() {

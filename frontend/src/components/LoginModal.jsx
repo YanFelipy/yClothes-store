@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useToast } from '../context/ToastContext';
 import { useAuthValue } from '../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +20,8 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 const LoginModal = () => {
     const { login } = useAuthValue();
+const navigate = useNavigate()
+
     //notifications
     const { showSuccess, showError } = useToast();
 
@@ -49,7 +52,7 @@ const LoginModal = () => {
     //login 
 
     const LoginUser = async (data) => {
-        console.log(data)
+       
 
         try {
             const response = await fetch("http://localhost:4000/api/users/login", {
@@ -60,21 +63,21 @@ const LoginModal = () => {
                 body: JSON.stringify(data)
             })
 
-             const resData = await response.json();
+            const resData = await response.json();
 
-             if (json.token) {
-        login(json.token);
-
-            if (response.ok) {
-                showSuccess(resData.message)
+           resData.token && login(resData.token);
+                       
+            if (response.ok ) {
+               showSuccess(resData && resData.message)
                 closeLogin()
+                 navigate("/");
             }
 
-        } catch (error) {
-          
-                showError(resData.message)
-                closeLogin()
-          
+        } catch (err) {
+
+            showError(resData && resData.message)
+            closeLogin()
+
         }
     }
 
@@ -104,21 +107,21 @@ const LoginModal = () => {
 
                         <label className={styles.labels}>
                             <span>Email :</span>
-                           <input {...register("email")}/>
+                            <input {...register("email")} />
                         </label>
 
                         <label className={styles.labels}>
                             <span>Password :</span>
-                            <input {...register("password")}/>
+                            <input {...register("password")} />
                         </label>
 
 
 
-                    <div className={styles.submitForm}>
-                        <button type='submit'>
-                            Login
-                        </button>
-                    </div>
+                        <div className={styles.submitForm}>
+                            <button type='submit'>
+                                Login
+                            </button>
+                        </div>
                     </form>
 
                 </div>
