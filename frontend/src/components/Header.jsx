@@ -15,6 +15,7 @@ import cart from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
 import accountsvg from '../assets/img/icons/user-round-svgrepo-com.svg'
 //components
 import Search from './Search'
+import UserMenu from './UserMenu'
 
 
 
@@ -72,9 +73,10 @@ const { openLogin } = useModals();
  <li className={styles.item_optuser}>
       <div className={styles.box_img}>
       <img src={accountsvg}  />
-      </div>
-      
-      {user ? <a href="">ACCOUNT</a> : 
+
+    </div>
+     
+      {user ?  <UserMenu />  : 
       
         <button className={styles.btSignIn} onClick={openLogin}>
         SIGN-IN
