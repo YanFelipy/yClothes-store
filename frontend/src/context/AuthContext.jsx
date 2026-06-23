@@ -3,7 +3,7 @@ import { jwtDecode } from 'jwt-decode';
 
 const AuthContext = createContext()
 
-export default function authProvider({ children, value }) {
+export default function AuthProvider({ children, value }) {
     const [user, setUser] = useState(null)
 
     useEffect(() => {

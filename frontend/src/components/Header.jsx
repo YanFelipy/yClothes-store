@@ -1,9 +1,9 @@
 // Hooks 
 import { useModals } from '../context/ModalContext'
-import { useAuthValue } from '../context/AuthContext'
+
 
 // Navigation
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 
 //styles
 import styles from './Header.module.css'
@@ -16,78 +16,83 @@ import accountsvg from '../assets/img/icons/user-round-svgrepo-com.svg'
 //components
 import Search from './Search'
 import UserMenu from './UserMenu'
+import AdminMenu from './AdminMenu'
 
+//Context
+import { useAuthValue } from '../context/AuthContext'
 
 
 const Header = () => {
     let userLogged = false
-const { openLogin } = useModals();
+    const { openLogin } = useModals();
+    const { user } = useAuthValue()
 
-  const { user } = useAuthValue()
 
-   
-    
-     return (
-   <header>
-    
-    <nav className={styles.navigations}>
-    <div className={styles.box_logo}>
-        <Link to="/">
-<img src={logo}  alt="logo" className={styles.logotype} />
-        </Link>
-    </div>
-<ul className={styles.ulcategories}>
-    <li>
-        <a href="">MEN</a>
-    </li>
 
-       <li>
-        <a href="">WOMEN</a>
-    </li>
+    return (
+        <header>
 
-       <li>
-        <a href="">KIDS</a>
-    </li>
-</ul>
-<div className={styles.search_box}>
-<Search />
-</div>
-<ul className={styles.uloptionsuser}>
+            <nav className={styles.navigations}>
+                <div className={styles.box_logo}>
+                    <Link to="/">
+                        <img src={logo} alt="logo" className={styles.logotype} />
+                    </Link>
+                </div>
+                <ul className={styles.ulcategories}>
+                    <li>
+                        <a href="">MEN</a>
+                    </li>
 
-    <Link to="/sh-cart">
-    <li className={styles.item_optuser}>
-         <div className={styles.box_img}>
-        <img src={cart}  />
-        </div>
-        <a href="">CART</a>
-    </li>
-    </Link>
+                    <li>
+                        <a href="">WOMEN</a>
+                    </li>
 
- <li className={styles.item_optuser}>
-     <div className={styles.box_img}>
-            <img src={heart}  />
-        </div>
-        <a href="">FAVS</a>
-    </li>
+                    <li>
+                        <a href="">KIDS</a>
+                    </li>
+                </ul>
+                <div className={styles.search_box}>
+                    <Search />
+                </div>
+                <ul className={styles.uloptionsuser}>
 
- <li className={styles.item_optuser}>
-      <div className={styles.box_img}>
-      <img src={accountsvg}  />
+                    <Link to="/sh-cart">
+                        <li className={styles.item_optuser}>
+                            <div className={styles.box_img}>
+                                <img src={cart} />
+                            </div>
+                            <a href="">CART</a>
+                        </li>
+                    </Link>
 
-    </div>
-     
-      {user ?  <UserMenu />  : 
-      
-        <button className={styles.btSignIn} onClick={openLogin}>
-        SIGN-IN
-        </button>
-        }
-        
-    </li>
-</ul>
-    </nav>
-   </header>
-  )
+                    <li className={styles.item_optuser}>
+                        <div className={styles.box_img}>
+                            <img src={heart} />
+                        </div>
+                        <a href="">FAVS</a>
+                    </li>
+
+                    <li className={styles.item_optuser}>
+                        <div className={styles.box_img}>
+                            <img src={accountsvg} />
+
+                        </div>
+
+
+                        {user && user.role === 'user' && <UserMenu />}
+                        {user && user.role === 'admin' && <AdminMenu />}
+                        {user == null &&
+                            <button className={styles.btSignIn} onClick={openLogin}>
+                                SIGN-IN
+                            </button>
+
+                        }
+
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    )
 }
 
 export default Header
