@@ -12,6 +12,7 @@ export default function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const { user, logout } = useAuthValue()
+    const navigate = useNavigate()
 
 
 

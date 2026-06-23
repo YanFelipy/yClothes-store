@@ -12,6 +12,7 @@ export default function BasicMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     const { user, logout } = useAuthValue()
+    const navigate = useNavigate()
 
 
 
@@ -22,15 +23,28 @@ export default function BasicMenu() {
         setAnchorEl(null);
     };
 
-    const Logout =  () => {
+
+    const ManageProducts = () => {
+        if (user && user.role == "admin") {
+            navigate("/mproducts")
+
+        }
+
+        else {
+            navigate("/");
+        }
+
+    }
+
+    const Logout = () => {
         logout()
 
-        if (user == null && localStorage.token == null){
-               navigate("/mproducts");
+        if (user == null && localStorage.token == null) {
+            navigate("/");
         } else {
             console.log("Erro ao fazer logout")
         }
-    } 
+    }
 
     return (
         <div>
@@ -54,7 +68,7 @@ export default function BasicMenu() {
                     },
                 }}
             >
-                <MenuItem onClick={handleClose}>Manage Products</MenuItem>
+                <MenuItem onClick={ManageProducts}>Manage Products</MenuItem>
                 <MenuItem onClick={handleClose}>My account</MenuItem>
                 <MenuItem onClick={Logout}>Logout</MenuItem>
             </Menu>
