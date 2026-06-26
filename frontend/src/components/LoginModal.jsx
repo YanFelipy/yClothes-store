@@ -19,7 +19,7 @@ import logo from '../assets/img/icons/logo_yc.png'
 
 
 const LoginModal = () => {
-    const { login } = useAuthValue();
+const { login } = useAuthValue();
 const navigate = useNavigate()
 
     //notifications

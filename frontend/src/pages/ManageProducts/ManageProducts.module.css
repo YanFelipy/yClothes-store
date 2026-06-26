@@ -1,0 +1,249 @@
+main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.container_manageProducts {
+    width: 80vw;
+    height: 100vh;
+    display: flex;
+    justify-content: start;
+    margin: 20px;
+    transition: 2s ease-out;
+
+}
+
+.box_toolFilters {
+    width: 22%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-width: 340px;
+}
+
+.pageTools {
+    border: 1px solid;
+    height: 30vh;
+    border-radius: 20px;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolTitle {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.toolTitle h3 {
+    font-family: 'Source-serif-pro';
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.toolsOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.toolsOptions button {
+    width: 300px;
+    height: 50px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source-serif-pro';
+    font-size: 1.3em;
+    font-weight: 700;
+
+}
+
+.toolsOptions button img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.filters {
+    min-height: 40vh;
+    border: 1px solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.filterTitle h3 {
+    font-family: 'Source-serif-pro';
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+
+.filtersContainer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+}
+
+.filterType,
+.filterPrice,
+.filterSizes {
+    background: none;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 80%;
+
+}
+
+.filterType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px;
+    gap: 10px;
+
+}
+
+.filterType h3 {
+    font-family: 'Source-serif-pro';
+    font-size: 1.2m;
+    font-weight: 800;
+
+}
+
+.filterType .checkboxItem {
+    border-top: solid 1px black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+
+}
+
+.filterType .checkboxItem {
+    margin: 0px;
+
+}
+
+.checkboxItem {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.checkboxItem label {
+    margin-left: 8px;
+    text-transform: capitalize;
+}
+
+
+.filterPrice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px;
+    gap: 10px;
+    font-family: 'Source-Serif-Pro';
+    font-weight: 900;
+}
+
+.priceLabels {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+
+.filterPrice input {
+    -webkit-appearance: none;
+    width: 80%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.filterPrice input::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #e2e8f0;
+    border-radius: 0px;
+    border: 0px solid #cbd5e1;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.filterPrice input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #000000;
+    border-radius: 5px;
+    border: 0px solid #ffffff;
+    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.4);
+    margin-top: -6.5px;
+}
+
+
+
+.sizeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    font-weight: 800;
+}
+
+.sizeButton {
+    padding: 10px 5px;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #999;
+    font-weight: normal;
+    flex: 1;
+    font-weight: 700;
+}
+
+.sizeButton.active {
+    border: 2px solid #000;
+    font-weight: bold;
+}
+
+
+.filterSizes {
+    font-family: 'Source-Serif-Pro';
+    font-weight: 900;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filterSizes h3 {
+    font-size: 1.3em;
+
+}

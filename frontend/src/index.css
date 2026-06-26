@@ -9,6 +9,21 @@
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
 
+  --cr-size: 18px;
+  --cr-radius: 4px;
+  --cr-border-w: 1.5px;
+  --cr-font-size: 16px;
+  --cr-gap: 10px;
+  --cr-row-gap: 12px;
+  --cr-font-color: #111827;
+  --cr-font-weight: 400;
+  --cr-unchecked-bg: #ffffff;
+  --cr-unchecked-border: #454545;
+  --cr-checked-bg: #0a0a0a;
+  --cr-checked-border: #9c9c9c;
+  --cr-disabled-opacity: 0.4;
+
+
  }
 
  a {
