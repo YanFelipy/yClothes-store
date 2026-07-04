@@ -1,18 +1,21 @@
-import { React } from 'react'
+import { React, useState } from 'react'
 import styles from './ManageProducts.module.css'
 
 import tool from '../../assets/img/icons/tool.svg'
 import create from '../../assets/img/icons/create.svg'
 import edit from '../../assets/img/icons/edit.svg'
 import deelete from '../../assets/img/icons/delete.svg'
-import { useState } from 'react'
 
+import FormEditProducts from '../../components/FormEditProducts'
+import FormCreateProducts from '../../components/FormCreateProducts'
 const ManageProducts = () => {
 
 
   const [types, setTypes] = useState({ shoes: true, tshirt: true, pants: true, hats: true });
   const [price, setPrice] = useState(250);
   const [size, setSize] = useState('M');
+  const [openEdit, setOpenEdit] = useState(false)
+  const [openCreate, setOpenCreate] = useState(true)
 
 
 
@@ -32,9 +35,9 @@ const ManageProducts = () => {
             </div>
 
             <div className={styles.toolsOptions}>
-              <button> <img src={create} alt="" />Create Product</button>
-              <button> <img src={edit} alt="" />Edit Product</button>
-              <button> <img src={deelete} alt="" />Delete Product</button>
+              <button onClick={(e)=>e.currentTarget(setOpenEdit(false), setOpenCreate(true))}> <img src={create} alt="" />Create Product</button>
+              <button onClick={(e)=>e.currentTarget(setOpenEdit(true), setOpenCreate(false))}> <img src={edit} alt="" />Edit Product</button>
+              
 
             </div>
           </div>
@@ -91,9 +94,6 @@ const ManageProducts = () => {
             </div>
 
 
-
-
-
           </div>
 
 
@@ -102,7 +102,11 @@ const ManageProducts = () => {
         {/*BOX EDIT AND VIEW PRODUCTS */}
 
         <div className={styles.box_editViewProd}>
+<div className={styles.boxCED}>
+ {openCreate != false ? <FormCreateProducts/> : "" }
+ {openEdit != false ? <FormEditProducts/> : "" }
 
+</div>
         </div>
 
       </section>

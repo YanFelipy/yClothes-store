@@ -11,9 +11,10 @@ main {
     height: 100vh;
     display: flex;
     justify-content: start;
+    justify-content: center;
     margin: 20px;
     transition: 2s ease-out;
-
+gap: 30px;
 }
 
 .box_toolFilters {
@@ -246,4 +247,14 @@ main {
 .filterSizes h3 {
     font-size: 1.3em;
 
+}
+
+
+.boxCED {
+   padding: 10px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 46vw;
+    min-width: 600px;
+    min-height: 65vh;
 }
