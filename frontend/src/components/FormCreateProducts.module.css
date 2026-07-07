@@ -1,5 +1,154 @@
-.boxEdit {
-    width: 400px;
-    height: 20vh;
+.titleCreate {
+    font-family: "Source-Serif-Pro";
+}
+
+.titleCreate span {
+color: rgba(250, 175, 0, 0.94);
+}
+.boxCreate {
+    min-height: 50vh;
+    display: flex;
+    gap: 20px;
+    font-family: 'Source-Serif-Pro';
+}
+
+.productDetails {
+    width: 70%;
+    border-radius: 10px;
+    border: 1px solid black;
+    padding: 0px 15px;
+}
+
+.productPreview {
+    width: 30%;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
+.formCreateProd {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    width: 100%;
+    min-height: 20vh;
+    gap: 20px;
+
+}
+
+.triLabel,
+.imagesLabel {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.labelName {
+    width: 50%;
+}
+
+.triLabel label,
+.imagesLabel label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    font-family: 'Source-Serif-Pro';
+}
+
+.triLabel label input {
+    background: none;
+    border-radius: 5px;
+    height: 25px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+
+.triLabel label select {
+    background: none;
+    background: none;
+    border-radius: 5px;
+    height: 25px;
+    border: 1px solid rgb(170, 170, 170);
+}
+
+
+
+input[type="file" ]{
+   color: transparent;
+  display: none;
+}
+
+
+
+.imagesLabel {
+    display: flex;
   
+    border: 1px solid rgb(172, 172, 172);
+    border-radius: 10px;
+    gap: 10px;
+    padding: 10px 0px;
+
+}
+
+.imagesLabel input {
+    width: 380px;
+    overflow: hidden;
+
+}
+
+.imagesLabel label {
+    margin-left: 15px;
+    
+}
+
+.imagesLabel label span {
+    margin: 10px 0px;
+}
+
+.imagesLabel label img {
+    width: 30px;
+}
+
+.boxSelectImg {
+    display: flex;
+    gap: 10px;
+    font-size: .8em;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+
+.btnSubmit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.btnSubmit .btnCreate {
+   font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 50%;
+    margin: 20px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.btnCreate {
+    background-image: linear-gradient(to right, #868686 0%, #000000 51%, #777777 100%);
+}
+
+.btnCreate:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }
