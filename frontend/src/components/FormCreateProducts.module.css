@@ -3,26 +3,32 @@
 }
 
 .titleCreate span {
-color: rgba(250, 175, 0, 0.94);
+    color: #B48A00;
 }
+
 .boxCreate {
     min-height: 50vh;
+    min-width: 50vw;
     display: flex;
     gap: 20px;
     font-family: 'Source-Serif-Pro';
 }
 
 .productDetails {
-    width: 70%;
+    width: 60%;
     border-radius: 10px;
     border: 1px solid black;
     padding: 0px 15px;
 }
 
-.productPreview {
-    width: 30%;
+.boxProductPreview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
     border-radius: 10px;
     border: 1px solid black;
+    padding: 0px 15px;
 }
 
 .formCreateProd {
@@ -72,16 +78,16 @@ color: rgba(250, 175, 0, 0.94);
 
 
 
-input[type="file" ]{
-   color: transparent;
-  display: none;
+input[type="file"] {
+    color: transparent;
+    display: none;
 }
 
 
 
 .imagesLabel {
     display: flex;
-  
+
     border: 1px solid rgb(172, 172, 172);
     border-radius: 10px;
     gap: 10px;
@@ -97,7 +103,7 @@ input[type="file" ]{
 
 .imagesLabel label {
     margin-left: 15px;
-    
+
 }
 
 .imagesLabel label span {
@@ -126,10 +132,117 @@ input[type="file" ]{
 
 
 .btnSubmit .btnCreate {
-   font-family: 'Roboto', sans-serif;
+    font-family: 'Source-serif-pro';
     font-weight: bold;
     width: 50%;
     margin: 20px;
+    padding: 15px 45px;
+    text-align: center;
+    font-size: 1em;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 20px;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.btnCreate {
+    background-image: linear-gradient(to right, #868686 0%, #000000 51%, #777777 100%);
+}
+
+.btnCreate:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}
+
+.prevProduct {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 10px;
+    min-height: 350px;
+    min-width: 250px;
+}
+
+.imageProduct {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+}
+
+.imageProduct img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+
+}
+
+.prevProduct h3,
+p,
+span {
+    margin: 7px 0px;
+}
+
+
+.product_category {
+    color: black;
+    text-align: center;
+    font-family: 'Source-Serif-Pro', sans serif;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin: 5px;
+}
+
+.product_name {
+    color: gray;
+    text-align: center;
+    text-align: center;
+    font-family: 'Roboto', sans serif;
+    font-weight: bold;
+
+    text-transform: capitalize;
+    margin: 1px;
+}
+
+.product_price {
+    color: black;
+    text-align: center;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 800;
+    margin: 5px;
+}
+
+.product_button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+.product_button .btn_view {
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+}
+
+.product_button .btn_add {
+    background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
+}
+
+.btn_add,
+.btn_view {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 80%;
+    margin: 10px;
     padding: 15px 45px;
     text-align: center;
     text-transform: uppercase;
@@ -143,11 +256,8 @@ input[type="file" ]{
     border: none;
 }
 
-.btnCreate {
-    background-image: linear-gradient(to right, #868686 0%, #000000 51%, #777777 100%);
-}
-
-.btnCreate:hover {
+.btn_add:hover,
+.btn_view:hover {
     background-position: right center;
     color: #fff;
     text-decoration: none;

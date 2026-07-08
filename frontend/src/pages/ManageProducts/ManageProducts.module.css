@@ -14,7 +14,7 @@ main {
     justify-content: center;
     margin: 20px;
     transition: 2s ease-out;
-gap: 30px;
+    gap: 30px;
 }
 
 .box_toolFilters {
@@ -251,10 +251,11 @@ gap: 30px;
 
 
 .boxCED {
-   padding: 10px 10px;
+    padding: 10px 10px;
     border: 1px solid black;
     border-radius: 20px;
-    width: 46vw;
-    min-width: 600px;
-    min-height: 65vh;
+    width: 60vw;
+    min-width: 800px;
+
+
 }

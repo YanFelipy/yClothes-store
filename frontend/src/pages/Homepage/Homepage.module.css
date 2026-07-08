@@ -237,9 +237,9 @@ main {
 .product_category {
     color: black;
     text-align: center;
-    font-family: 'Source-Serif-Pro', sans serif;
+    font-family: 'Source-Serif-Pro', sans-serif;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 1.1em;
     margin: 5px;
 }
 
@@ -247,7 +247,7 @@ main {
     color: gray;
     text-align: center;
     text-align: center;
-    font-family: 'Roboto', sans serif;
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
     margin: 1px;
 }
