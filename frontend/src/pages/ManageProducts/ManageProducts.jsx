@@ -35,9 +35,9 @@ const ManageProducts = () => {
             </div>
 
             <div className={styles.toolsOptions}>
-              <button onClick={(e)=>e.currentTarget(setOpenEdit(false), setOpenCreate(true))}> <img src={create} alt="" />Create Product</button>
-              <button onClick={(e)=>e.currentTarget(setOpenEdit(true), setOpenCreate(false))}> <img src={edit} alt="" />Edit Product</button>
-              
+              <button onClick={(e) => e.currentTarget(setOpenEdit(false), setOpenCreate(true))}> <img src={create} alt="" />Create Product</button>
+              <button onClick={(e) => e.currentTarget(setOpenEdit(true), setOpenCreate(false))}> <img src={edit} alt="" />Edit Product</button>
+
 
             </div>
           </div>
@@ -101,12 +101,28 @@ const ManageProducts = () => {
 
         {/*BOX EDIT AND VIEW PRODUCTS */}
 
-        <div className={styles.box_editViewProd}>
-<div className={styles.boxCED}>
- {openCreate != false ? <FormCreateProducts/> : "" }
- {openEdit != false ? <FormEditProducts/> : "" }
 
-</div>
+        <div className={styles.boxEditAndProducts}>
+          <div className={styles.box_editViewProd}>
+            <div className={styles.boxCED}>
+              {openCreate != false ? <FormCreateProducts /> : ""}
+              {openEdit != false ? <FormEditProducts /> : ""}
+
+            </div>
+          </div>
+
+          <div className={styles.showProducts}>
+            <div className={styles.introShowProducts}>
+              <h2 >(*) Category</h2>
+              <p > Showing : All Products</p>
+            </div>
+          </div>
+          
+        </div>
+
+
+        <div>
+
         </div>
 
       </section>
