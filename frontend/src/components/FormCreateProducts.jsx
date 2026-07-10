@@ -12,6 +12,7 @@ const FormCreateProducts = () => {
   const [imgProd, setImgProd] = useState(null)
   const [prodName, setProdName] = useState("")
   const [prodPrice, setProdPrice] = useState("")
+    const [previousPrice, setPreviousPrice] = useState("")
 
   //to prevent memory leak
   useEffect(() => {
@@ -19,6 +20,7 @@ const FormCreateProducts = () => {
       if (imgProd) URL.revokeObjectURL(imgProd);
     };
   }, [imgProd]);
+
 
   return (
     <div>
@@ -69,8 +71,8 @@ const FormCreateProducts = () => {
               </label>
 
               <label>
-                <span className={styles.inputName}>Discount :</span>
-                <input type="text" placeholder=' Previous Price' />
+                <span className={styles.inputName} >Prev. Price (discount) :</span>
+                <input type="text" placeholder=' Previous Price' name={previousPrice} value={previousPrice} onChange={(e) => setPreviousPrice(e.target.value)} />
               </label>
 
               <label>
@@ -129,6 +131,7 @@ const FormCreateProducts = () => {
             </div>
             {category ? <h3 className={styles.product_category}>{category}</h3> : <h3>(Insert a category)</h3>}
             {prodName ? <p className={styles.product_name}>{prodName}</p> : <p>(Insert Name) </p>}
+            {previousPrice? <span className={styles.product_prevPrice}>{previousPrice} $</span> : ""}
             {prodPrice ? <span className={styles.product_price}>{prodPrice} $</span> : <p>(Insert Price) </p>}
             <div className={styles.product_button}>
               <button className={styles.btn_add}> View</button>

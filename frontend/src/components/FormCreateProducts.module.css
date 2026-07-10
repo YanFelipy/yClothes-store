@@ -219,6 +219,18 @@ span {
     font-family: 'source-serif-pro', sans-serif;
     font-weight: 800;
     margin: 5px;
+
+}
+
+.product_prevPrice {
+    color: black;
+    text-align: center;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 800;
+    font-size: .8em;
+    margin: 5px;
+    text-decoration: line-through;
+
 }
 
 .product_button {
