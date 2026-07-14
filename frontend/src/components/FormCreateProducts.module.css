@@ -12,6 +12,7 @@
     display: flex;
     gap: 20px;
     font-family: 'Source-Serif-Pro';
+    animation: fade-in 0.7s ease-in;
 }
 
 .productDetails {
@@ -177,6 +178,11 @@ input[type="file"] {
     align-items: center;
     width: 120px;
     height: 120px;
+   
+}
+
+.imageProduct .newImage {
+     animation: fade-in 0.7s ease-in;
 }
 
 .imageProduct img {
@@ -184,6 +190,7 @@ input[type="file"] {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
+     
 
 }
 
@@ -201,6 +208,7 @@ span {
     font-weight: bold;
     font-size: 1.5em;
     margin: 5px;
+    animation: fade-in 0.7s ease-in;
 }
 
 .product_name {
@@ -211,6 +219,7 @@ span {
     font-weight: bold;
     text-transform: capitalize;
     margin: 1px;
+    animation: fade-in 0.7s ease-in;
 }
 
 .product_price {
@@ -219,6 +228,7 @@ span {
     font-family: 'source-serif-pro', sans-serif;
     font-weight: 800;
     margin: 5px;
+     animation: fade-in 0.7s ease-in;
 
 }
 
@@ -230,6 +240,7 @@ span {
     font-size: .8em;
     margin: 5px;
     text-decoration: line-through;
+     animation: fade-in 0.7s ease-in;
 
 }
 
@@ -272,4 +283,19 @@ span {
     background-position: right center;
     color: #fff;
     text-decoration: none;
+}
+
+
+
+
+/* animations */ 
+
+@keyframes fade-in {
+  0% {
+      opacity: 0%;
+  } 
+
+  100% {
+    opacity: 100%;
+  }
 }

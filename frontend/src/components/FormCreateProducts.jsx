@@ -12,7 +12,7 @@ const FormCreateProducts = () => {
   const [imgProd, setImgProd] = useState(null)
   const [prodName, setProdName] = useState("")
   const [prodPrice, setProdPrice] = useState("")
-    const [previousPrice, setPreviousPrice] = useState("")
+  const [previousPrice, setPreviousPrice] = useState("")
 
   //to prevent memory leak
   useEffect(() => {
@@ -95,7 +95,7 @@ const FormCreateProducts = () => {
                 <span>Thumbail Image</span>
 
                 <div className={styles.boxSelectImg}>
-                  <input className={styles.customFileUpload} type="file" onChange={(e) => setImgProd(URL.createObjectURL(e.target.files[0]))} />
+                  <input className={styles.customFileUpload}  accept="image/*" type="file" onChange={(e) => setImgProd(URL.createObjectURL(e.target.files[0]))} />
                   <img src={imgSelect} alt="" />
                   <span> Upload image...</span>
                 </div>
@@ -106,7 +106,7 @@ const FormCreateProducts = () => {
 
                 <div className={styles.boxSelectImg}>
 
-                  <input type="file" multiple />
+                  <input type="file" multiple  accept="image/*"/>
                   <img src={imgsSelect} alt="" />
                   <span> Upload images...</span>
                 </div>
@@ -127,11 +127,11 @@ const FormCreateProducts = () => {
           <h3>Product Preview</h3>
           <div className={styles.prevProduct}>
             <div className={styles.imageProduct}>
-              {imgProd ? <img src={imgProd} alt='' /> : <img src={genShirt}></img>}
+              {imgProd ? <img className={styles.newImage} src={imgProd} alt='' /> : <img src={genShirt}></img>}
             </div>
             {category ? <h3 className={styles.product_category}>{category}</h3> : <h3>(Insert a category)</h3>}
             {prodName ? <p className={styles.product_name}>{prodName}</p> : <p>(Insert Name) </p>}
-            {previousPrice? <span className={styles.product_prevPrice}>{previousPrice} $</span> : ""}
+            {previousPrice ? <span className={styles.product_prevPrice}>{previousPrice} $</span> : ""}
             {prodPrice ? <span className={styles.product_price}>{prodPrice} $</span> : <p>(Insert Price) </p>}
             <div className={styles.product_button}>
               <button className={styles.btn_add}> View</button>
