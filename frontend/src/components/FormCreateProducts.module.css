@@ -299,3 +299,8 @@ span {
     opacity: 100%;
   }
 }
+
+.asteristic {
+    font-size: .7em;
+    color: #b45100;
+}

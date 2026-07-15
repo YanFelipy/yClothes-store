@@ -8,11 +8,18 @@ import imgsSelect from '../assets/img/icons/ImgsSelect.svg'
 import genShirt from '../assets/img/product/generic-shirt.png'
 
 const FormCreateProducts = () => {
-  const [category, setCategory] = useState("")
-  const [imgProd, setImgProd] = useState(null)
-  const [prodName, setProdName] = useState("")
-  const [prodPrice, setProdPrice] = useState("")
-  const [previousPrice, setPreviousPrice] = useState("")
+
+const [prodName, setProdName] = useState("");
+const [category, setCategory] = useState("");
+const [productType, setProductType] = useState("");
+const [prodPrice, setProdPrice] = useState("");
+const [previousPrice, setPreviousPrice] = useState("");
+const [productSize, setProductSize] = useState("SM"); 
+
+
+const [imgProd, setImgProd] = useState(null); 
+const [imgFile, setImgFile] = useState(null); 
+const [galleryFiles, setGalleryFiles] = useState([]); 
 
   //to prevent memory leak
   useEffect(() => {
@@ -36,14 +43,14 @@ const FormCreateProducts = () => {
           <form className={styles.formCreateProd}>
             <div className={styles.triLabel}>
               <label className={styles.labelName}>
-                <span className={styles.inputText}>Product Name :</span>
-                <input type="text" placeholder='Product Name' value={prodName} maxLength={20} onChange={(e) => setProdName(e.target.value)} />
+                <span className={styles.inputText}><span className={styles.asteristic}>*</span> Product Name :</span>
+                <input type="text" placeholder='Product Name' required value={prodName} maxLength={20} onChange={(e) => setProdName(e.target.value)} />
 
               </label>
 
               <label>
-                <span className={styles.selText}>Product Category :</span>
-                <select name="selectedCategory" value={category} onChange={(e) => setCategory(e.target.value)} >
+                <span className={styles.selText}><span className={styles.asteristic}>*</span> Product Category :</span>
+                <select name="selectedCategory" required={true} value={category} onChange={(e) => setCategory(e.target.value)} >
                   <option value="Men's">Insert category</option>
                   <option value="Men's">Men's</option>
                   <option value="Woman">Woman</option>
@@ -52,8 +59,8 @@ const FormCreateProducts = () => {
               </label>
 
               <label>
-                <span className={styles.selText}>Product Type:</span>
-                <select name="selectedType" defaultValue="Select...">
+                <span className={styles.selText}><span className={styles.asteristic}>*</span> Product Type:</span>
+                <select required name="selectedType" defaultValue="Select...">
                   <option value="Shirts">Shirts</option>
                   <option value="Shoes">Shoes</option>
                   <option value="Hats">Hats</option>
@@ -66,18 +73,18 @@ const FormCreateProducts = () => {
 
             <div className={styles.triLabel}>
               <label>
-                <span className={styles.inputName}>Product Price :</span>
-                <input type="text" placeholder='Price' value={prodPrice} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
+                <span className={styles.inputName}><span className={styles.asteristic}>*</span> Product Price :</span>
+                <input type="number" placeholder='Price' required value={prodPrice} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
               </label>
 
               <label>
                 <span className={styles.inputName} >Prev. Price (discount) :</span>
-                <input type="text" placeholder=' Previous Price' name={previousPrice} value={previousPrice} onChange={(e) => setPreviousPrice(e.target.value)} />
+                <input type="number" placeholder=' Previous Price' name={previousPrice} value={previousPrice} onChange={(e) => setPreviousPrice(e.target.value)} />
               </label>
 
               <label>
-                <span className={styles.selText}>Product Size :</span>
-                <select name="selectedCategory">
+                <span className={styles.selText}> <span className={styles.asteristic}>*</span> Product Size :</span>
+                <select name="selectedCategory" required>
                   <option value="SM">Small</option>
                   <option value="M">Medium</option>
                   <option value="L">Large</option>
@@ -92,10 +99,10 @@ const FormCreateProducts = () => {
             <div className={styles.imagesLabel}>
 
               <label>
-                <span>Thumbail Image</span>
+                <span><span className={styles.asteristic}>*</span> Thumbail Image</span>
 
                 <div className={styles.boxSelectImg}>
-                  <input className={styles.customFileUpload}  accept="image/*" type="file" onChange={(e) => setImgProd(URL.createObjectURL(e.target.files[0]))} />
+                  <input required className={styles.customFileUpload} accept="image/*" type="file" onChange={(e) => setImgProd(URL.createObjectURL(e.target.files[0]))} />
                   <img src={imgSelect} alt="" />
                   <span> Upload image...</span>
                 </div>
@@ -106,7 +113,7 @@ const FormCreateProducts = () => {
 
                 <div className={styles.boxSelectImg}>
 
-                  <input type="file" multiple  accept="image/*"/>
+                  <input type="file" multiple accept="image/*" value={galleryFiles} name={previousPrice} value={previousPrice} onChange={(e) => setGalleryFiles(URL.createObjectURL(e.target.files[0]))} />
                   <img src={imgsSelect} alt="" />
                   <span> Upload images...</span>
                 </div>
@@ -114,6 +121,7 @@ const FormCreateProducts = () => {
 
 
             </div>
+            <div><span className={styles.asteristic}>(*) Required fields</span></div>
 
             <label className={styles.btnSubmit}>
               <input type="submit" className={styles.btnCreate} value={"Create Product"} />
@@ -139,7 +147,6 @@ const FormCreateProducts = () => {
             </div>
           </div>
         </div>
-
       </div>
 
 
