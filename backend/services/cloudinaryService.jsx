@@ -1,32 +1,20 @@
+const cloudinary = require('cloudinary').v2;
+const streamifier = require('streamifier');
 
-export const uploadImage = async (file) => {
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
-  const CLOUD_NAME = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
-  const UPLOAD_PRESET = import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET;
-  const CLOUDINARY_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/image/upload`;
-
-
-  console.log("Cloud Name:", import.meta.env.VITE_CLOUDINARY_CLOUD_NAME);
-  console.log("Preset:", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
-  if (!CLOUD_NAME || !UPLOAD_PRESET) {
-    throw new Error("Variáveis de ambiente não carregadas!");
-  }
-
-
-  const formData = new FormData();
-  formData.append("file", file);
-  formData.append("upload_preset", UPLOAD_PRESET);
-
-  const response = await fetch(CLOUDINARY_URL, {
-    method: "POST",
-    body: formData,
+const upload = (buffer) => {
+  return new Promise((resolve, reject) => {
+    let stream = cloudinary.uploader.upload_stream((error, result) => {
+      if (result) resolve(result);
+      else reject(error);
+    });
+    streamifier.createReadStream(buffer).pipe(stream);
   });
-
-  if (!response.ok) {
-    throw new Error("Erro ao realizar upload da imagem para o Cloudinary");
-  }
-
-  const data = await response.json();
-  return data.secure_url; 
 };
 
+module.exports = { upload };

@@ -7,8 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// Rotas
+// Routes
 const userRoutes = require('./routes/user.route');
+const uploadRoutes = require("./routes/upload.route");
+app.use("/api/upload", uploadRoutes)
 app.use('/api/users', userRoutes);
 
 //reqs
