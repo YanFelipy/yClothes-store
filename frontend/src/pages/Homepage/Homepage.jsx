@@ -1,8 +1,29 @@
 import styles from './Homepage.module.css'
 import {useNavigate} from 'react-router'
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+
+
+// import required modules
+import { EffectFade, Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+
+
+
+
 // ASSETS // 
 import imgTrend from '../../assets/img/product/gym_product_trend.jpg'
+import flashSale from '../../assets/img/hype/FlashSale.png'
+import winterCollection from '../../assets/img/hype/WinterCollection.png'
+
 
 
 
@@ -15,12 +36,32 @@ const Homepage = () => {
    {/* SECTION NEW COLLECTIONS */}
 
         <section className={styles.container_newcollections}>
-<div className={styles.box_newArrivals}>
-<h2>Shop New Arrivals</h2>
-<button onClick={() => 
-  navigate("/new-collections")
-}> Shop Now
-</button>
+<div className={styles.newsSlider}>
+ <Swiper
+      autoplay={{
+        delay: 2500,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      }}
+      loop={true}
+        spaceBetween={30}
+        effect={'fade'}
+        navigation={true}
+        pagination={{ 
+          clickable: true,
+        }}
+        modules={[EffectFade, Navigation, Pagination, Autoplay]}
+        className="mySwiper"
+          slidesPerView={1}
+      >
+        <SwiperSlide>
+          <img src={flashSale} />
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={winterCollection} />
+        </SwiperSlide>
+      
+      </Swiper>
 </div>
         </section>
 

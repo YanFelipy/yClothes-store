@@ -8,16 +8,16 @@ main {
 
 .container_newcollections {
     width: 100vw;
-    height: 50vh;
+    height: 65vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../assets/img/hype/vytenis-malisauskas-CiPxyCRM9ck-unsplash 1.svg');
-    background-repeat: no-repeat;
+   padding: 20px;
     background-size: cover;
     transition: 2s ease-out;
     filter: grayscale();
     background-position-y: -20px;
+    
 }
 
 .container_newcollections:hover {
@@ -26,14 +26,16 @@ main {
 
 }
 
-.box_newArrivals {
+.newsSlider {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 35%;
-    min-height: 40%;
-    background-color: transparent;
+    width: 90%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 20px;
+    object-position: center top;
+   
 
 }
 
@@ -301,3 +303,19 @@ main {
 }
 
 
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
