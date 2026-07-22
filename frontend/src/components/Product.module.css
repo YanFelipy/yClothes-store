@@ -1,0 +1,121 @@
+.product_trending {
+    display: flex;
+    width: 25%;
+    max-width: 200px;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 10px;
+    border: solid 1px black;
+    border-radius: 20px;
+}
+
+
+.product_details {
+    width: 200px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.boxProdImg {
+    display: flex;
+    width: 130px;
+    max-width: 200px;
+    border: solid 1px blac;
+
+}
+
+.product_Image {
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+
+.product_category {
+    color: black;
+    text-align: center;
+    font-family: 'Source-Serif-Pro', sans serif;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 2px;
+    animation: fade-in 0.7s ease-in;
+}
+
+.product_name {
+    color: gray;
+    text-align: center;
+    text-align: center;
+    font-family: 'Roboto', sans serif;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 1px;
+    animation: fade-in 0.7s ease-in;
+}
+
+.product_price {
+    color: black;
+    text-align: center;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 800;
+    margin: 5px;
+    animation: fade-in 0.7s ease-in;
+
+}
+
+.product_prevPrice {
+    color: black;
+    text-align: center;
+    font-family: 'source-serif-pro', sans-serif;
+    font-weight: 800;
+    font-size: .8em;
+    margin: 5px;
+    text-decoration: line-through;
+    animation: fade-in 0.7s ease-in;
+
+}
+
+.product_button {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+   
+}
+
+
+.product_button .btn_view {
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
+}
+
+.product_button .btn_add {
+    background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
+}
+
+.btn_add,
+.btn_view {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    width: 80%;
+    margin: 10px;
+    padding: 15px 45px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: block;
+    outline: none;
+    border: none;
+}
+
+.btn_add:hover,
+.btn_view:hover {
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
+}

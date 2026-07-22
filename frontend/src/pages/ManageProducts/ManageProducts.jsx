@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import styles from './ManageProducts.module.css'
 
 import tool from '../../assets/img/icons/tool.svg'
@@ -8,17 +8,37 @@ import deelete from '../../assets/img/icons/delete.svg'
 
 import FormEditProducts from '../../components/FormEditProducts'
 import FormCreateProducts from '../../components/FormCreateProducts'
+
+import { useAuthValue } from '../../context/AuthContext'
+
+import Product from '../../components/Product.jsx'
+
+
 const ManageProducts = () => {
 
-
+  const {user} = useAuthValue()
   const [types, setTypes] = useState({ shoes: true, tshirt: true, pants: true, hats: true });
   const [price, setPrice] = useState(250);
   const [size, setSize] = useState('M');
   const [openEdit, setOpenEdit] = useState(false)
   const [openCreate, setOpenCreate] = useState(true)
-
-
-
+  const [isAdmin, setIsAdmin] =useState()
+  const [listProducts, setListProducts] = useState()
+  
+  
+  useEffect(  ()=> {
+    const url = 'http://localhost:4000/api/products'
+   
+ 
+    fetch(url).then(res => res.json())
+      .then(data => setListProducts(data))
+      .catch(err => console.error(err));
+    
+    if(user && user.role == 'admin' ) {
+   setIsAdmin(true)
+}
+}, [])
+console.log(listProducts)
   return (
     <main>
       <section className={styles.container_manageProducts}>
@@ -116,6 +136,21 @@ const ManageProducts = () => {
               <h2 >(*) Category</h2>
               <p > Showing : All Products</p>
             </div>
+
+
+<div className={styles.boxProducts}>
+  { listProducts && listProducts.map((product) => (
+    
+    <Product key={product._id} ProductName={product.prodName}
+     productCategory={product.category}
+      previousPrice={product.previousPrice || null} 
+      imgProduct={product.imageUrl} ProductPrice={product.prodPrice} 
+      isAdmin={isAdmin}  />
+  ))
+
+  }
+</div>
+
           </div>
           
         </div>
