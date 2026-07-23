@@ -11,7 +11,7 @@ import styles from './Header.module.css'
 //assets
 import logo from '../assets/img/icons/logo_yc.png'
 import heart from '../assets/img/icons/heart-svgrepo-com.svg'
-import cart from '../assets/img/icons/shopping-cart-01-svgrepo-com.svg'
+import cart from '../assets/img/icons/shCart.svg'
 import accountsvg from '../assets/img/icons/user-round-svgrepo-com.svg'
 //components
 import Search from './Search'

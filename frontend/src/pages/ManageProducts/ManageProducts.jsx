@@ -38,7 +38,7 @@ const ManageProducts = () => {
    setIsAdmin(true)
 }
 }, [])
-console.log(listProducts)
+
   return (
     <main>
       <section className={styles.container_manageProducts}>

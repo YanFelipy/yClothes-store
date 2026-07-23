@@ -157,12 +157,12 @@ const FormCreateProducts = () => {
             <div className={styles.triLabel}>
               <label>
                 <span className={styles.inputName}><span className={styles.asteristic}>*</span> Product Price :</span>
-                <input type="number" placeholder='Price' required value={prodPrice} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
+                <input type="number" placeholder='Price' required value={prodPrice} min={0.00} max={1000.00} step={0.01} maxLength={10}  onChange={(e) => setProdPrice(e.target.value)} />
               </label>
 
               <label>
                 <span className={styles.inputName} >Prev. Price (discount) :</span>
-                <input type="number" placeholder=' Previous Price' name={previousPrice} value={previousPrice} onChange={(e) => setPreviousPrice(e.target.value)} />
+                <input type="number" placeholder=' Previous Price' name={previousPrice} value={previousPrice} min={0.00} max={1000.00} step={0.01} maxLength={10}  onChange={(e) => setPreviousPrice(e.target.value)} />
               </label>
 
               <label>

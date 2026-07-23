@@ -5,25 +5,72 @@
     flex-direction: column;
     align-items: center;
     padding: 10px 10px;
-    border: solid 1px black;
+    border: solid 0.5px rgb(134, 134, 134);
     border-radius: 20px;
 }
 
 
 .product_details {
     width: 200px;
-    
     display: flex;
     flex-direction: column;
     align-items: center;
 
 }
 
+.adminActions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2px;
+    width: 100%;
+}
+
+.adminActions button {
+    background: none;
+    border: none;
+    padding: 6px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.deleteIcon,
+.editIcon {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.2s ease;
+}
+
+.adminActions button:has(.editIcon):hover {
+    background-color: rgba(0, 123, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.adminActions button:hover .editIcon {
+    transform: scale(1.15) rotate(-10deg);
+
+}
+
+.adminActions button:has(.deleteIcon):hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    transform: translateY(-2px);
+}
+
+.adminActions button:hover .deleteIcon {
+    transform: scale(1.15) rotate(10deg);
+
+}
+
 .boxProdImg {
     display: flex;
-    width: 130px;
+    width: 150px;
     max-width: 200px;
-    border: solid 1px blac;
+    border: solid 1px rgba(0, 0, 0, 0.102);
+    border-radius: 10px;
 
 }
 
@@ -34,19 +81,14 @@
     border-radius: 20px;
 }
 
+.nameAndCategory {
+    display: flex;
 
-.product_category {
-    color: black;
-    text-align: center;
-    font-family: 'Source-Serif-Pro', sans serif;
-    font-weight: bold;
-    font-size: 1.2em;
-    margin: 2px;
-    animation: fade-in 0.7s ease-in;
+    align-items: center;
 }
 
 .product_name {
-    color: gray;
+    color: rgb(0, 0, 0);
     text-align: center;
     text-align: center;
     font-family: 'Roboto', sans serif;
@@ -54,6 +96,22 @@
     text-transform: capitalize;
     margin: 1px;
     animation: fade-in 0.7s ease-in;
+}
+
+.product_category {
+    color: rgb(99, 99, 99);
+    text-align: center;
+    font-family: 'Source-Serif-Pro', sans serif;
+    font-weight: bold;
+    font-size: 1em;
+    margin: 2px;
+    animation: fade-in 0.7s ease-in;
+}
+
+.prices {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .product_price {
@@ -72,7 +130,7 @@
     font-family: 'source-serif-pro', sans-serif;
     font-weight: 800;
     font-size: .8em;
-    margin: 5px;
+    margin: 1px;
     text-decoration: line-through;
     animation: fade-in 0.7s ease-in;
 
@@ -81,36 +139,68 @@
 .product_button {
     display: flex;
     align-items: center;
-    flex-direction: column;
-   
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+
 }
 
 
-.product_button .btn_view {
+.product_button .btn_add {
     background-image: linear-gradient(to right, #F09819 0%, #EDDE5D 51%, #F09819 100%);
 }
 
-.product_button .btn_add {
+.product_button .btn_view {
     background-image: linear-gradient(to right, #232526 0%, #414345 51%, #232526 100%);
 }
 
-.btn_add,
 .btn_view {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto';
     font-weight: bold;
-    width: 80%;
-    margin: 10px;
-    padding: 15px 45px;
+    width: 60%;
+    margin: 1px;
+    padding: 10px 30px;
     text-align: center;
-    text-transform: uppercase;
+text-transform: uppercase;
     transition: 0.5s;
     background-size: 200% auto;
     color: white;
     box-shadow: 0 0 20px #eee;
     border-radius: 10px;
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     outline: none;
     border: none;
+}
+
+.btn_add {
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin: 1px;
+    padding: 10px 30px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+    border: none;
+    width: 40%;
+}
+
+.shCart {
+    width: 20px;
+    height: 20px;
+ 
+}
+
+.shCart path {
+  stroke: white;
 }
 
 .btn_add:hover,

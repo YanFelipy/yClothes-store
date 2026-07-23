@@ -269,50 +269,50 @@ main {
 .showProducts {
     display: flex;
     flex-direction: column;
-  align-items: start;
- 
+    align-items: start;
+    width: 100%;
     border: 1px solid black;
     border-radius: 10px;
     min-height: 30vh;
+
 }
 
 .introShowProducts {
-border-bottom: 1px solid black;
-display: flex;
-flex-direction: column;
-justify-content: start;
-align-items: center;
-width: 100%;
-padding: 15px 0px;
- }
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0px;
+}
 
- .introShowProducts h2 {
-font-family: 'Source-serif-Pro';
-font-weight: 900;
-font-size: 2em;
-margin: 5px 0px;
-text-transform: uppercase;
-letter-spacing: 1.2px;
+.introShowProducts h2 {
+    font-family: 'Source-serif-Pro';
+    font-weight: 900;
+    font-size: 2em;
+    margin: 5px 0px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
 
 }
 
- .introShowProducts p {
-     color: gray;
+.introShowProducts p {
+    color: gray;
     text-align: center;
     text-align: center;
-   font-family: 'Source-serif-Pro';
+    font-family: 'Source-serif-Pro';
     font-weight: bold;
     text-transform: capitalize;
     margin: 1px;
- }
+}
 
 
- .boxProducts {
+.boxProducts {
     display: flex;
     width: 100%;
     justify-content: center;
-    gap: 20px;
-    padding: 10px 0px;
-    
- }
+    gap: 30px;
+    padding: 10px 5px;
 
+}
