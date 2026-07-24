@@ -6,5 +6,7 @@ const { authGuard } = require('../middlewares/authGuard');
 
 router.post('/', authGuard, productController.createProduct);
 router.get('/',  productController.getAllProducts);
-router.get('/', productController.getProductById);
+router.get('/:id', productController.getProductById);
+router.delete('/:id', authGuard, productController.deleteProduct);
+
 module.exports = router;

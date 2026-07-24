@@ -62,7 +62,6 @@ const getAllProducts = async (req, res) => {
   }
 };
 
-// Nova função para buscar UM produto pelo ID (útil para página de detalhes)
 const getProductById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -79,4 +78,26 @@ const getProductById = async (req, res) => {
   }
 };
 
-module.exports = { createProduct, getAllProducts, getProductById};
+const deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    console.log("ID recebido para deletar:", id)
+
+    const product = await Product.findByIdAndDelete(id);
+
+    if (!product) {
+      return res.status(404).json({ errors: ["Produto não encontrado."] });
+    }
+
+res.status(200).json({ 
+      product, 
+      message: "O produto foi deletado com sucesso."
+})
+  } catch (err) {
+    console.error("Erro ao buscar produto:", err);
+    res.status(500).json({ errors: ["Erro interno ao deletar o produto."] });
+  }
+}
+
+module.exports = { createProduct, getAllProducts, getProductById, deleteProduct };
