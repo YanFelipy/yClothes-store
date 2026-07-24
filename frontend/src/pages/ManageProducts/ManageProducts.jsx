@@ -16,28 +16,57 @@ import Product from '../../components/Product.jsx'
 
 const ManageProducts = () => {
 
-  const {user} = useAuthValue()
+  const { user } = useAuthValue()
   const [types, setTypes] = useState({ shoes: true, tshirt: true, pants: true, hats: true });
   const [price, setPrice] = useState(250);
   const [size, setSize] = useState('M');
   const [openEdit, setOpenEdit] = useState(false)
   const [openCreate, setOpenCreate] = useState(true)
-  const [isAdmin, setIsAdmin] =useState()
+  const [isAdmin, setIsAdmin] = useState()
   const [listProducts, setListProducts] = useState()
-  
-  
-  useEffect(  ()=> {
+
+
+  useEffect(() => {
     const url = 'http://localhost:4000/api/products'
-   
- 
+
+
     fetch(url).then(res => res.json())
       .then(data => setListProducts(data))
       .catch(err => console.error(err));
-    
-    if(user && user.role == 'admin' ) {
-   setIsAdmin(true)
-}
-}, [])
+
+    if (user && user.role == 'admin') {
+      setIsAdmin(true)
+    }
+  }, [])
+
+
+  const handleDelete = async (id) => {
+
+    const token = localStorage.getItem("token");
+    try {
+      const response = await fetch(`http://localhost:4000/api/products/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${token}`
+        }
+      })
+
+
+
+      if (response.ok) {
+     setListProducts(prev => prev.filter(product => product._id !== id));
+      }
+    }
+    catch (error) {
+      console.error("Failed to delete product:", error);
+    }
+
+  }
+
+
+
+
+
 
   return (
     <main>
@@ -138,21 +167,21 @@ const ManageProducts = () => {
             </div>
 
 
-<div className={styles.boxProducts}>
-  { listProducts && listProducts.map((product) => (
-    
-    <Product key={product._id} ProductName={product.prodName}
-     productCategory={product.category}
-      previousPrice={product.previousPrice || null} 
-      imgProduct={product.imageUrl} ProductPrice={product.prodPrice} 
-      isAdmin={isAdmin}  />
-  ))
+            <div className={styles.boxProducts}>
+              {listProducts && listProducts.map((product) => (
 
-  }
-</div>
+                <Product key={product._id} ProductName={product.prodName}
+                  productCategory={product.category}
+                  previousPrice={product.previousPrice || null}
+                  imgProduct={product.imageUrl} ProductPrice={product.prodPrice}
+                  isAdmin={isAdmin} onDelete={handleDelete} product={product} />
+              ))
+
+              }
+            </div>
 
           </div>
-          
+
         </div>
 
 

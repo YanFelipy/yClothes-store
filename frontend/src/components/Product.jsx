@@ -6,8 +6,9 @@ import DeleteIcon from '../assets/img/icons/deleteIcon.svg?react'
 import EditIcon from '../assets/img/icons/editIcon.svg?react'
 import ShCart from '../assets/img/icons/shCart.svg?react'
 
-const Product = ({imgProduct, productCategory, ProductName, previousPrice,
-     ProductPrice, isAdmin, onDelete, onEdit  }) => {
+const Product = ({product, imgProduct, productCategory, ProductName, previousPrice,
+     ProductPrice, isAdmin, onDelete, onEdit, }) => {
+
   return (
    <div className={styles.product_trending}>
    
