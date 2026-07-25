@@ -36,13 +36,14 @@ const Product = ({product, imgProduct, productCategory, ProductName, previousPri
    <img src={imgProduct} className={styles.product_Image}/>
 
       </div>
-     <div className={styles.prices}>
-
       <div className={styles.nameAndCategory}>
      <p className={styles.product_name}>{ProductName}</p>
      <h3 className={styles.product_category}>| ({productCategory})</h3>
 
       </div>
+      
+     <div className={styles.prices}>
+
      { previousPrice && <span className={styles.product_prevPrice}>{previousPrice} $  </span> }
      <p className={styles.product_price}>{ProductPrice} $</p>
 
