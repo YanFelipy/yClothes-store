@@ -85,14 +85,11 @@
 
 
 
-input[type="file"] {
-    color: transparent;
-    display: none;
-}
 
 .imagesLabel {
     display: flex;
-
+    align-items: center;
+    justify-content: center;
     border: 1px solid rgb(172, 172, 172);
     border-radius: 10px;
     gap: 10px;
@@ -101,14 +98,12 @@ input[type="file"] {
 }
 
 .imagesLabel input {
-    width: 380px;
     overflow: hidden;
 
 }
 
 .imagesLabel label {
-    margin-left: 15px;
-
+    width: 30%;
 }
 
 .imagesLabel label span {
@@ -116,16 +111,24 @@ input[type="file"] {
 }
 
 .imagesLabel label img {
-    width: 30px;
+    width: 40px;
 }
 
 .boxSelectImg {
     display: flex;
+    justify-content: center;
     gap: 10px;
     font-size: .8em;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 0px 10px;
+    padding: 5px;
+}
+
+
+input[type="file"] {
+    color: transparent;
+    display: none;
+
 }
 
 .btnSubmit {
@@ -133,6 +136,65 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
     width: 100%;
+}
+
+.boxSelectImg img,
+.galleryImgSelected img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.selectedImagesLabel {
+    width: 30%;
+    border-radius: 20px;
+    flex-wrap: wrap;
+    display: flex;
+  align-items: center;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+
+
+}
+
+.selectedImagesLabel div, .selectedImagesLabel span {
+         animation: fade-in 0.7s ease-in;
+}
+
+.selectedImagesLabel span {
+    font-weight: bold;
+    margin: 10px 0px;
+}
+
+.rollSelected {
+    min-width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 5px 10px;
+    min-height: 40px;
+    border-radius: 10px;
+    border: 1px solid rgb(37, 37, 37);
+}
+
+
+.galleryImgSelected {
+    width: 35px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+
+}
+
+.galleryImgSelected img {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 5px;
+    border: 1px solid rgb(50, 50, 50);
 }
 
 
@@ -166,7 +228,7 @@ input[type="file"] {
 
 .btnCreate:disabled {
     opacity: 0.6;
-    cursor:not-allowed;
+    cursor: not-allowed;
 }
 
 .prevProduct {
@@ -184,7 +246,7 @@ input[type="file"] {
 
 .product_trending {
     display: flex;
-    
+
     width: 230px;
     flex-direction: column;
     align-items: center;
@@ -208,7 +270,7 @@ input[type="file"] {
     justify-content: center;
     align-items: center;
     width: 100px;
-   
+
 
 }
 
@@ -232,15 +294,12 @@ span {
 }
 
 
-
-
-
 .boxProdImg {
     display: flex;
     width: 150px;
     max-width: 150px;
     border-radius: 10px;
-   
+
 }
 
 .product_Image {
@@ -270,7 +329,7 @@ span {
     margin: 1px;
     font-size: 1em;
     animation: fade-in 0.7s ease-in;
-   
+
 }
 
 .product_category {

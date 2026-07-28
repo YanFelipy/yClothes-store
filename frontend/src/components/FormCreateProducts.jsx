@@ -34,24 +34,36 @@ const FormCreateProducts = () => {
   const [galleryFiles, setGalleryFiles] = useState([]);
   const [isNotReady, setIsNotReady] = useState(true)
 
+  const MAX_FILES = 5;
 
   //to prevent memory leak and verify fields
 
-useEffect(() => {
+  useEffect(() => {
     // 1. Lógica de validação dos campos
-    if (!prodName || !category || !productType || !prodPrice || !productSize || !productSize || !imgFile ) {
+    if (!prodName || !category || !productType || !prodPrice || !productSize || !productSize || !imgFile) {
       setError("(*) Required fields are missing");
     } else {
       setIsNotReady(false)
-      setError(""); 
+      setError("");
+    }
+
+    if (galleryFiles.length > MAX_FILES) {
+      alert(`You can only select ${MAX_FILES} images`);
+
+      setGalleryFiles([]);
+      return;
     }
 
     return () => {
       if (imgProd) {
         URL.revokeObjectURL(imgProd);
       }
+
+
+
+
     };
-  }, [imgProd, prodName, category, productType, prodPrice, productSize]);
+  }, [galleryFiles, imgProd, prodName, category, productType, prodPrice, productSize]);
 
 
   const createProduct = async (e) => {
@@ -77,7 +89,7 @@ useEffect(() => {
     }
 
     if (previousPrice && previousPrice <= prodPrice) {
-        setIsUploading(false)
+      setIsUploading(false)
       setError("The previous price must be higher than the current price")
       return
     }
@@ -133,7 +145,7 @@ useEffect(() => {
 
 
   };
-
+  console.log(galleryFiles)
 
   return (
     <div>
@@ -211,27 +223,45 @@ useEffect(() => {
 
                 <div className={styles.boxSelectImg}>
                   <input required className={styles.customFileUpload} accept="image/*" type="file" onChange={(e) => { setImgProd(URL.createObjectURL(e.target.files[0])); setImgFile(e.target.files[0]); }} />
-                  <img src={imgSelect} alt="" />
-                  <span> Upload image...</span>
+                  {imgProd == null ? <><img src={imgSelect} alt="image thumb select" />
+                    <span> Upload image...</span> </>
+                    : <><img src={imgProd} alt="selected image thumb" />
+                      <span> Change Image...</span> </>}
                 </div>
               </label>
 
               <label>
-                <span>Product Sample</span>
+                <span>Product Sample </span>
 
                 <div className={styles.boxSelectImg}>
 
-                  <input type="file" multiple accept="image/*" name={previousPrice} onChange={(e) => setGalleryFiles(Array.from(e.target.files))} />
+                  <input type="file" multiple accept="image/*" name={previousPrice} onChange={(e) => setGalleryFiles((Array.from(e.target.files)))} />
+
                   <img src={imgsSelect} alt="" />
-                  <span> Upload images...</span>
+                  <span> Upload images...<span className={styles.asteristic}>(max. 4)</span></span>
+
                 </div>
               </label>
+
+              <div className={styles.selectedImagesLabel}>
+
+                {galleryFiles && galleryFiles.length > 0 ?
+                  <>  <span>Selected Images</span>
+                    <div className={styles.rollSelected}>
+
+                      {galleryFiles && galleryFiles.map((gallery) => (
+                        <div key={gallery.id = crypto.randomUUID()} className={styles.galleryImgSelected}>
+                          <img src={URL.createObjectURL(gallery)} />
+                        </div>
+                      ))}
+                    </div> </> : null}
+              </div>
 
 
             </div>
             <div>
               {<p className={styles.asteristic}>{error}</p>}
-              
+
             </div>
 
             <label className={styles.btnSubmit}>
@@ -256,7 +286,7 @@ useEffect(() => {
 
               <div className={styles.nameAndCategory}>
                 {prodName ? <p className={styles.product_name}>{prodName}</p> : <p>(Insert Name) </p>}
-                {category ? <h3 className={styles.product_category}>| {category}</h3> : <p style={{fontSize: ".9em", fontWeight: "bold" }}>| (Select a category)</p>}
+                {category ? <h3 className={styles.product_category}>| {category}</h3> : <p style={{ fontSize: ".9em", fontWeight: "bold" }}>| (Select a category)</p>}
 
               </div>
 
