@@ -27,11 +27,8 @@ const Header = () => {
     const { openLogin } = useModals();
     const { user } = useAuthValue()
 
-
-
     return (
         <header>
-
             <nav className={styles.navigations}>
                 <div className={styles.box_logo}>
                     <Link to="/">

@@ -8,7 +8,6 @@
    font-synthesis: none;
    text-rendering: optimizeLegibility;
    -webkit-font-smoothing: antialiased;
-
   --cr-size: 18px;
   --cr-radius: 4px;
   --cr-border-w: 1.5px;
@@ -34,9 +33,10 @@
  }
 
  body {
-   margin: 0;
+   margin: 0px;
    display: flex;
    place-items: center;
+   width: 100vw;
    min-width: 320px;
    min-height: 100vh;
    overflow-x: hidden;
@@ -52,5 +52,6 @@
  button {
    cursor: pointer;
  }
+
 
 
