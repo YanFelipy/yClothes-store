@@ -70,7 +70,7 @@ const ManageProducts = () => {
     setOpenEdit(false)
      setOpenEdit(true)
     setSelectedProduct(product); 
-    console.log(selectedProduct)
+    
   };
 
 

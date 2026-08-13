@@ -12,7 +12,7 @@ import ShCart from '../assets/img/icons/shCart.svg?react'
 import { useAuthValue } from '../context/AuthContext'
 import { uploadImage } from '../services/uploadService.jsx'
 
-const FormEditProducts = ( {selProduct}  ) => {
+const FormEditProducts = ({ selProduct }) => {
 
   //hooks
   const navigate = useNavigate()
@@ -33,49 +33,71 @@ const FormEditProducts = ( {selProduct}  ) => {
   const [imgFile, setImgFile] = useState(null);
   const [galleryFiles, setGalleryFiles] = useState([]);
   const [isNotReady, setIsNotReady] = useState(true)
+  const [prodId, setProdId] = useState("")
 
   const MAX_FILES = 5;
 
-  //to prevent memory leak and verify fields
 
+
+
+  // filling fields of formulary
   useEffect(() => {
-    // 1. Lógica de validação dos campos
-    if (!prodName || !category || !productType || !prodPrice || !productSize || !productSize || !imgFile) {
+    if (selProduct) {
+      setProdName(selProduct.prodName);
+      setProdPrice(selProduct.prodPrice);
+      setProductType(selProduct.productType || "");
+      setCategory(selProduct.category || "");
+      setPreviousPrice(selProduct.previousPrice || "");
+      setImgProd(selProduct.imageUrl || []);
+      setProductSize(selProduct.productSize || "");
+      setGalleryFiles(selProduct.galleryFiles || []);
+    setProdId(selProduct._id)
+
+    }
+  }, [selProduct?._id]);
+
+  //verifying obrigatory fields
+  useEffect(() => {
+    if (!prodName || !category || !productType || !prodPrice || !productSize) {
       setError("(*) Required fields are missing");
+      setIsNotReady(true);
     } else {
-      setIsNotReady(false)
+      setIsNotReady(false);
       setError("");
     }
+  }, [prodName, category, productType, prodPrice, productSize, imgFile]);
 
-    if(selProduct) {
-      setProdName(selProduct.prodName)
-      setProdPrice(selProduct.prodPrice)
-      setProductType(selProduct.productType)
-      setCategory(selProduct.category)
-      setPreviousPrice(selProduct.previousPrice | "")
-      setImgProd(selProduct.imageUrl)
-      setProductSize(selProduct.productSize)
-      setGalleryFiles(selProduct.galleryFiles | "")
-      setImgFile(selProduct.imageUrl)
-    }
-
-    if (galleryFiles.length > MAX_FILES) {
+  //verifying the selected img thumb
+  useEffect(() => {
+    if (galleryFiles && galleryFiles.length > MAX_FILES) {
       alert(`You can only select ${MAX_FILES} images`);
-
       setGalleryFiles([]);
-      return;
     }
+  }, [galleryFiles]);
 
+  //to prevent memory leak
+  useEffect(() => {
     return () => {
-      if (imgProd) {
+      if (imgProd && typeof imgProd === 'string' && imgProd.startsWith('blob:')) {
         URL.revokeObjectURL(imgProd);
       }
-
     };
-  }, [selProduct,imgFile, galleryFiles, imgProd, prodName, category, productType, prodPrice, productSize]);
+  }, [imgProd]);
 
-  const EditProduct = async (e) => {
+
+
+  const EditProduct = async (e, prodId) => {
     e.preventDefault();
+
+  const currentId = prodId || selProduct?._id;
+  console.log(currentId)
+
+  if (!currentId) {
+    console.error("ID do produto não encontrado!");
+    setError("Erro: Produto inválido para edição.");
+    return;
+  }
+
     const token = localStorage.getItem("token");
 
     if (user.role != "admin") {
@@ -104,7 +126,7 @@ const FormEditProducts = ( {selProduct}  ) => {
 
 
     try {
-
+  
       const thumbUrl = await uploadImage(imgFile);
 
       let galleryUrls = [];
@@ -126,11 +148,12 @@ const FormEditProducts = ( {selProduct}  ) => {
         galleryImages: galleryUrls || []
       };
 
-      console.log(productData)
 
 
-      const response = await fetch("http://localhost:4000/api/products", {
-        method: "POST",
+
+
+      const response  = await fetch(`http://localhost:4000/api/products/${currentId}`, {
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${token}`
@@ -139,9 +162,8 @@ const FormEditProducts = ( {selProduct}  ) => {
       });
 
       if (response.ok) {
-        alert("Produto criado!");
-
-        window.location.reload()
+        alert("Produto editado!");
+       
 
       }
     } catch (error) {
@@ -230,7 +252,16 @@ const FormEditProducts = ( {selProduct}  ) => {
                 <span><span className={styles.asteristic}>*</span> Thumbail Image</span>
 
                 <div className={styles.boxSelectImg}>
-                  <input required className={styles.customFileUpload} accept="image/*" type="file" onChange={(e) => { setImgProd(URL.EditObjectURL(e.target.files[0])); setImgFile(e.target.files[0]); }} />
+                  <input required className={styles.customFileUpload} accept="image/*"
+
+                    type="file" onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        setImgProd(URL.createObjectURL(file));
+                        setImgFile(file);
+                      }
+                    }} />
+
                   {imgProd == null ? <><img src={imgSelect} alt="image thumb select" />
                     <span> Upload image...</span> </>
                     : <><img src={imgProd} alt="selected image thumb" />
@@ -259,7 +290,7 @@ const FormEditProducts = ( {selProduct}  ) => {
 
                       {galleryFiles && galleryFiles.map((gallery) => (
                         <div key={gallery.id = crypto.randomUUID()} className={styles.galleryImgSelected}>
-                          <img src={URL.EditObjectURL(gallery)} />
+                          <img src={URL.createObjectURL(gallery)} />
                         </div>
                       ))}
                     </div> </> : null}
