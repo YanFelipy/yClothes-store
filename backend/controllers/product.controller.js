@@ -81,6 +81,7 @@ const getProductById = async (req, res) => {
 const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
+
     
     console.log("ID recebido para deletar:", id)
 
@@ -100,4 +101,30 @@ res.status(200).json({
   }
 }
 
-module.exports = { createProduct, getAllProducts, getProductById, deleteProduct };
+
+const editProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    
+    console.log("ID recebido para editar:", id)
+
+    const updateData = req.body
+
+    const product = await Product.findByIdAndUpdate(id, updateData, { new: true });
+
+    if (!product) {
+      return res.status(404).json({ errors: ["Produto não encontrado."] });
+    }
+
+res.status(200).json({ 
+      product, 
+      message: "O produto foi editado com sucesso."
+})
+  } catch (err) {
+    console.error("Erro ao buscar produto:", err);
+    res.status(500).json({ errors: ["Erro interno ao editar o produto."] });
+  }
+}
+
+
+module.exports = { createProduct, getAllProducts, getProductById, deleteProduct, editProduct};
