@@ -12,7 +12,7 @@ import ShCart from '../assets/img/icons/shCart.svg?react'
 import { useAuthValue } from '../context/AuthContext'
 import { uploadImage } from '../services/uploadService.jsx'
 
-const FormEditProducts = () => {
+const FormEditProducts = ( {selProduct}  ) => {
 
   //hooks
   const navigate = useNavigate()
@@ -47,6 +47,18 @@ const FormEditProducts = () => {
       setError("");
     }
 
+    if(selProduct) {
+      setProdName(selProduct.prodName)
+      setProdPrice(selProduct.prodPrice)
+      setProductType(selProduct.productType)
+      setCategory(selProduct.category)
+      setPreviousPrice(selProduct.previousPrice | "")
+      setImgProd(selProduct.imageUrl)
+      setProductSize(selProduct.productSize)
+      setGalleryFiles(selProduct.galleryFiles | "")
+      setImgFile(selProduct.imageUrl)
+    }
+
     if (galleryFiles.length > MAX_FILES) {
       alert(`You can only select ${MAX_FILES} images`);
 
@@ -59,12 +71,8 @@ const FormEditProducts = () => {
         URL.revokeObjectURL(imgProd);
       }
 
-
-
-
     };
-  }, [galleryFiles, imgProd, prodName, category, productType, prodPrice, productSize]);
-
+  }, [selProduct,imgFile, galleryFiles, imgProd, prodName, category, productType, prodPrice, productSize]);
 
   const EditProduct = async (e) => {
     e.preventDefault();
@@ -72,7 +80,7 @@ const FormEditProducts = () => {
 
     if (user.role != "admin") {
 
-      alert("Você não tem permissão para criar produtos, fazendo logout")
+      alert("Você não tem permissão para editar produtos, fazendo logout")
 
       setTimeout(() => {
         logout()
@@ -145,7 +153,7 @@ const FormEditProducts = () => {
 
 
   };
-  console.log(galleryFiles)
+
 
   return (
     <div>

@@ -18,7 +18,7 @@ const Product = ({product, imgProduct, productCategory, ProductName, previousPri
         <div className={styles.adminActions}>
 
 
-          <button onClick={() => onEdit(product._id)}>
+          <button onClick={() => onEdit(product)}>
             <EditIcon className={styles.editIcon}  />
           </button>
 

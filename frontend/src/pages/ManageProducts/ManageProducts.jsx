@@ -24,6 +24,7 @@ const ManageProducts = () => {
   const [openCreate, setOpenCreate] = useState(true)
   const [isAdmin, setIsAdmin] = useState()
   const [listProducts, setListProducts] = useState()
+  const [selectedProduct, setSelectedProduct] = useState([] | null)
 
 
   useEffect(() => {
@@ -64,8 +65,13 @@ const ManageProducts = () => {
   }
 
 
-
-
+  const handleEditClick = (product) => {
+    setOpenCreate(false)
+    setOpenEdit(false)
+     setOpenEdit(true)
+    setSelectedProduct(product); 
+    console.log(selectedProduct)
+  };
 
 
   return (
@@ -155,7 +161,7 @@ const ManageProducts = () => {
           <div className={styles.box_editViewProd}>
             <div className={styles.boxCED}>
               {openCreate != false ? <FormCreateProducts /> : ""}
-              {openEdit != false ? <FormEditProducts /> : ""}
+              {openEdit != false ? <FormEditProducts selProduct={selectedProduct}/> : ""}
 
             </div>
           </div>
@@ -174,7 +180,7 @@ const ManageProducts = () => {
                   productCategory={product.category}
                   previousPrice={product.previousPrice || null}
                   imgProduct={product.imageUrl} ProductPrice={product.prodPrice}
-                  isAdmin={isAdmin} onDelete={handleDelete} product={product} />
+                  isAdmin={isAdmin} onEdit={handleEditClick} onDelete={handleDelete} product={product} />
               ))
 
               }

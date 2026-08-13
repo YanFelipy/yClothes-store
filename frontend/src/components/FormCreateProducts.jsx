@@ -145,7 +145,7 @@ const FormCreateProducts = () => {
 
 
   };
-  console.log(galleryFiles)
+  
 
   return (
     <div>
