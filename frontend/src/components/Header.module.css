@@ -30,7 +30,6 @@ header {
 
 ul {
     list-style: none;
-    
     padding: 0px;
 }
 
@@ -94,9 +93,9 @@ img {
 
 
 @media screen and (max-width: 1280px) {
-    
-.navigations {
-min-width: 100%;
-}
+
+    .navigations {
+        min-width: 100%;
+    }
 
 }
