@@ -83,8 +83,7 @@ const FormEditProducts = ({ selProduct }) => {
     };
   }, [imgProd]);
 
-
-
+  
   const EditProduct = async (e, prodId) => {
     e.preventDefault();
 
@@ -189,6 +188,7 @@ const FormEditProducts = ({ selProduct }) => {
 
     finally {
       setIsUploading(false);
+      window.location.reload();
     }
 
   };

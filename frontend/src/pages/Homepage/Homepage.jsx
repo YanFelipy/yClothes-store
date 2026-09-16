@@ -1,5 +1,5 @@
 import styles from './Homepage.module.css'
-import {useNavigate} from 'react-router'
+import {useNavigate, Link} from 'react-router'
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -30,6 +30,7 @@ import winterCollection from '../../assets/img/hype/WinterCollection.png'
 const Homepage = () => {
 
   let navigate = useNavigate()
+
   return (
     <main>
 
@@ -92,7 +93,8 @@ const Homepage = () => {
   </div>
   </div>
 
-<div className={styles.mensc}>
+<Link to={"/collections"} className={styles.mensc}>
+<div>
      <div className={styles.name_category}>
     <h2>
      Men's
@@ -103,6 +105,8 @@ const Homepage = () => {
       
   </div>
   </div>
+</Link>
+
 
 </div>
 
