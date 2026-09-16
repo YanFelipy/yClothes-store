@@ -1,0 +1,390 @@
+main {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.container_manageProducts {
+    width: 80vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: start;
+    justify-content: center;
+    margin: 20px;
+    transition: 2s ease-out;
+    gap: 30px;
+}
+
+.box_toolFilters {
+    width: 22%;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    min-width: 340px;
+}
+
+.pageTools {
+    border: 1px solid;
+    height: 30vh;
+    border-radius: 20px;
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.toolTitle {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.toolTitle h3 {
+    font-family: 'Source-serif-pro';
+    font-weight: 800;
+    font-size: 1.4em;
+}
+
+.toolsOptions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+
+}
+
+.toolsOptions button {
+    width: 300px;
+    height: 50px;
+    background: none;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Source-serif-pro';
+    font-size: 1.3em;
+    font-weight: 700;
+
+}
+
+.toolsOptions button img {
+    width: 30px;
+    margin-right: 10px;
+}
+
+.filters {
+    min-height: 40vh;
+    border: 1px solid;
+    border-radius: 20px;
+    display: flex;
+    justify-content: start;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding: 5px;
+}
+
+
+
+
+.filterTitle h2 {
+    font-family: 'Source-serif-pro';
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+.filterTitle h3 {
+    font-family: 'Source-serif-pro';
+    font-size: 1.4em;
+    font-weight: 800;
+}
+
+
+.filtersContainer {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    width: 250px;
+}
+
+.filterType,
+.filterPrice,
+.filterSizes,
+.collectionFilter {
+    background: none;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    padding: 15px;
+    width: 80%;
+
+}
+
+.collectionFilter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid black;
+    padding: 0px;
+    min-height: 200px;
+
+}
+
+
+.collectionRoll {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.optRoll {
+    font-family: 'Source-serif-pro';
+    font-size: 1em;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(104, 104, 104);
+    border-radius: 10px;
+    padding: 5px;
+    width: 28%;
+    height: 70px;
+    background: none;
+    
+}
+
+.optRoll:focus {
+    border: 2px black solid;
+}
+
+.optRoll p {
+    margin: 1px;
+}
+
+.iconCollection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+
+}
+
+.iconCollection img {
+    width: 100%;
+    object-fit: contain;
+    image-rendering: optimizeQuality;
+}
+
+
+.filterType {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px;
+    gap: 10px;
+
+}
+
+.filterType h3 {
+    font-family: 'Source-serif-pro';
+    font-size: 1.2m;
+    font-weight: 800;
+
+}
+
+.filterType .checkboxItem {
+    border-top: solid 1px black;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+
+}
+
+.filterType .checkboxItem {
+    margin: 0px;
+
+}
+
+.checkboxItem {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.checkboxItem label {
+    margin-left: 8px;
+    text-transform: capitalize;
+}
+
+
+
+.filterPrice {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px;
+    gap: 10px;
+    font-family: 'Source-Serif-Pro';
+    font-weight: 900;
+}
+
+.priceLabels {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+
+.filterPrice input {
+    -webkit-appearance: none;
+    width: 80%;
+    background: transparent;
+    cursor: pointer;
+}
+
+.filterPrice input::-webkit-slider-runnable-track {
+    height: 2px;
+    background: #e2e8f0;
+    border-radius: 0px;
+    border: 0px solid #cbd5e1;
+    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.1);
+}
+
+.filterPrice input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 15px;
+    width: 15px;
+    background: #000000;
+    border-radius: 5px;
+    border: 0px solid #ffffff;
+    box-shadow: 0px 4px 9px rgba(0, 0, 0, 0.4);
+    margin-top: -6.5px;
+}
+
+
+
+.sizeContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5px;
+    font-weight: 800;
+}
+
+.sizeButton {
+    padding: 10px 5px;
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+    border: 1px solid #999;
+    font-weight: normal;
+    flex: 1;
+    font-weight: 700;
+}
+
+.sizeButton.active {
+    border: 2px solid #000;
+    font-weight: bold;
+}
+
+
+.filterSizes {
+    font-family: 'Source-Serif-Pro';
+    font-weight: 900;
+    display: flex;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.filterSizes h3 {
+    font-size: 1.3em;
+
+}
+
+
+.boxCED {
+    padding: 10px 10px;
+    border: 1px solid black;
+    border-radius: 20px;
+    width: 65vw;
+    min-width: 800px;
+
+
+}
+
+.boxEditAndProducts {
+    display: flex;
+    width: 60vw;
+    min-width: 800px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.showProducts {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 10px;
+    min-height: 30vh;
+
+}
+
+.introShowProducts {
+    border-bottom: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0px;
+}
+
+.introShowProducts h2 {
+    font-family: 'Source-serif-Pro';
+    font-weight: 900;
+    font-size: 2em;
+    margin: 5px 0px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+
+}
+
+.introShowProducts p {
+    color: gray;
+    text-align: center;
+    text-align: center;
+    font-family: 'Source-serif-Pro';
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 1px;
+}
+
+
+.boxProducts {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 30px;
+    padding: 10px 5px;
+
+}
