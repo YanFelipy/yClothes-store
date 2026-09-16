@@ -20,6 +20,17 @@ const ProductsCatalog = () => {
     const [collection, setCollection] = useState('');
 
     const [listProducts, setListProducts] = useState()
+
+      useEffect(() => {
+        const url = 'http://localhost:4000/api/products'
+    
+    
+        fetch(url).then(res => res.json())
+          .then(data => setListProducts(data))
+          .catch(err => console.error(err));
+    
+        
+      }, [])
     
 
     return (
@@ -149,7 +160,7 @@ const ProductsCatalog = () => {
                                     productCategory={product.category}
                                     previousPrice={product.previousPrice || null}
                                     imgProduct={product.imageUrl} ProductPrice={product.prodPrice}
-                                    isAdmin={isAdmin} onEdit={handleEditClick} onDelete={handleDelete} product={product} />
+                                   product={product} />
                             ))
 
                             }
