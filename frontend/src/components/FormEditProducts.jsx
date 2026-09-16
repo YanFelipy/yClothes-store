@@ -38,8 +38,6 @@ const FormEditProducts = ({ selProduct }) => {
   const MAX_FILES = 5;
 
 
-
-
   // filling fields of formulary
   useEffect(() => {
     if (selProduct) {
@@ -51,7 +49,8 @@ const FormEditProducts = ({ selProduct }) => {
       setImgProd(selProduct.imageUrl || []);
       setProductSize(selProduct.productSize || "");
       setGalleryFiles(selProduct.galleryFiles || []);
-    setProdId(selProduct._id)
+      setProdId(selProduct._id)
+      console.log(imgProd)
 
     }
   }, [selProduct?._id]);
@@ -89,16 +88,13 @@ const FormEditProducts = ({ selProduct }) => {
   const EditProduct = async (e, prodId) => {
     e.preventDefault();
 
-  const currentId = prodId || selProduct?._id;
-  console.log(currentId)
+    const currentId = prodId || selProduct?._id;
 
-  if (!currentId) {
-    console.error("ID do produto não encontrado!");
-    setError("Erro: Produto inválido para edição.");
-    return;
-  }
-
-    const token = localStorage.getItem("token");
+    if (!currentId) {
+      console.error("ID do produto não encontrado!");
+      setError("Erro: Produto inválido para edição.");
+      return;
+    }
 
     if (user.role != "admin") {
 
@@ -107,9 +103,9 @@ const FormEditProducts = ({ selProduct }) => {
       setTimeout(() => {
         logout()
       }, 2000);
-    }
 
-    setIsUploading(true);
+      return
+    }
 
     const MAX_FILE_SIZE = 2.5 * 1024 * 1024; // 2.5MB in bytes
     if (imgFile && imgFile.size > MAX_FILE_SIZE) {
@@ -124,15 +120,31 @@ const FormEditProducts = ({ selProduct }) => {
       return
     }
 
+    setIsUploading(true);
+    setError("");
 
     try {
-  
-      const thumbUrl = await uploadImage(imgFile);
+      const token = localStorage.getItem("token");
 
-      let galleryUrls = [];
+      let thumbUrl = selProduct?.imageUrl || "";
+
+      if (imgFile && imgFile instanceof File) {
+        const thumbUrl = await uploadImage(imgFile);
+
+      }
+
+      let galleryUrls = selProduct?.galleryImages || [];
 
       if (galleryFiles && galleryFiles.length > 0) {
-        galleryUrls = await Promise.all(galleryFiles.map(uploadImage));
+
+        const newUploads = await Promisse.All(
+        galleryFiles.map((file) => (file instanceof File ? uploadImage(file) : file))
+
+        )
+
+        galleryUrls = newUploads
+
+
       }
 
 
@@ -151,8 +163,7 @@ const FormEditProducts = ({ selProduct }) => {
 
 
 
-
-      const response  = await fetch(`http://localhost:4000/api/products/${currentId}`, {
+      const response = await fetch(`http://localhost:4000/api/products/${currentId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -163,16 +174,22 @@ const FormEditProducts = ({ selProduct }) => {
 
       if (response.ok) {
         alert("Produto editado!");
-       
 
+      } else {
+        const errResponse = await response.json();
+        setError(errResponse.errors?.[0] || "Erro ao editar produto.");
       }
-    } catch (error) {
-
-      console.error("Erro no processo:", error);
-    } finally {
-      setIsUploading(false);
     }
 
+    catch (error) {
+      console.error("Erro no processo de edição:", error);
+      setError("Ocorreu um erro ao tentar salvar as alterações.");
+      console.error("Erro no processo:", error);
+    }
+
+    finally {
+      setIsUploading(false);
+    }
 
   };
 
@@ -223,7 +240,7 @@ const FormEditProducts = ({ selProduct }) => {
             <div className={styles.triLabel}>
               <label>
                 <span className={styles.inputName}><span className={styles.asteristic}>*</span> Product Price :</span>
-                <input type="number" inputMode="decimal" minLength={3} pattern="^\d+\.\d{2}$" placeholder='Price' required value={prodPrice} pattern="^\d+\.\d{2}$" min={0.00} max={1000.00} step={0.01} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
+                <input type="number" inputMode="decimal" minLength={3} pattern="^\d+\.\d{2}$" placeholder='Price' required value={prodPrice} min={0.00} max={1000.00} step={0.01} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
               </label>
 
               <label>
@@ -252,7 +269,7 @@ const FormEditProducts = ({ selProduct }) => {
                 <span><span className={styles.asteristic}>*</span> Thumbail Image</span>
 
                 <div className={styles.boxSelectImg}>
-                  <input required className={styles.customFileUpload} accept="image/*"
+                  <input className={styles.customFileUpload} accept="image/*"
 
                     type="file" onChange={(e) => {
                       const file = e.target.files[0];
@@ -274,7 +291,7 @@ const FormEditProducts = ({ selProduct }) => {
 
                 <div className={styles.boxSelectImg}>
 
-                  <input type="file" multiple accept="image/*" name={previousPrice} onChange={(e) => setGalleryFiles((Array.from(e.target.files)))} />
+                  <input type="file" multiple accept="image/*" name={galleryFiles} onChange={(e) => setGalleryFiles((Array.from(e.target.files)))} />
 
                   <img src={imgsSelect} alt="" />
                   <span> Upload images...<span className={styles.asteristic}>(max. 4)</span></span>

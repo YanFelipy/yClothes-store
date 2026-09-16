@@ -90,8 +90,8 @@ const ManageProducts = () => {
             </div>
 
             <div className={styles.toolsOptions}>
-              <button onClick={(e) => e.currentTarget(setOpenEdit(false), setOpenCreate(true))}> <img src={create} alt="" />Create Product</button>
-              <button onClick={(e) => e.currentTarget(setOpenEdit(true), setOpenCreate(false))}> <img src={edit} alt="" />Edit Product</button>
+              <button onClick={(e) => (setOpenEdit(false), setOpenCreate(true))}> <img src={create} alt="" />Create Product</button>
+              <button onClick={(e) => (setOpenEdit(true), setOpenCreate(false))}> <img src={edit} alt="" />Edit Product</button>
 
 
             </div>
