@@ -1,8 +1,13 @@
-import { React, useEffect, useState, } from 'react'
-import styles from './ProductsCatalog.module.css'
-import { useSearchParams } from 'react-router'
+import { React, useEffect, useState } from 'react'
 
-import { useAuthValue } from '../../context/AuthContext'
+//styles
+import styles from './ProductsCatalog.module.css'
+
+//hooks
+import { useSearchParams } from 'react-router-dom'
+
+
+//components
 import Product from '../../components/Product.jsx'
 
 //icons
@@ -11,50 +16,66 @@ import Dress from '../../assets/img/icons/dressc.svg'
 import Suit from '../../assets/img/icons/suitc.svg'
 
 const ProductsCatalog = () => {
-    const { user } = useAuthValue()
-    const [searchParams] = useSearchParams();
+
+    const [searchParams, setSearchParams] = useSearchParams();
     const categoryFromUrl = searchParams.get('category') || '';
-    const [types, setTypes] = useState({ shoes: true, tshirt: true, pants: true, hats: true });
-    const [price, setPrice] = useState(250);
-    const [size, setSize] = useState('M');
+
+    const [types, setTypes] = useState({ Shoes: true, Shirts: true, Pants: true, Hats: true });
+    const [price, setPrice] = useState(500);
+    const [size, setSize] = useState('');
     const [collection, setCollection] = useState(categoryFromUrl);
     const [listProducts, setListProducts] = useState([]);
-    const [filteredProducts, setFilteredProducts] = useState([]);
-
-
-    useEffect(() => {
-        const url = 'http://localhost:4000/api/products'
-
-        fetch(url)
-            .then(res => res.json())
-            .then(data => setListProducts(data))
-            .catch(err => console.error(err));
-    }, []);
-
-
-
-
-    useEffect(() => {
-        if (!listProducts) return;
-
-        const result = listProducts.filter((product) => {
-
-            if (collection === "") return true;
-
-            return product.category === collection;
-        });
-
-        setFilteredProducts(result);
-    }, [listProducts, collection]);
 
     useEffect(() => {
         const category = searchParams.get('category');
-        if (category) {
-            setCollection(category);
-        } else {
-            setCollection('');
-        }
+        setCollection(category || '');
     }, [searchParams]);
+
+    useEffect(() => {
+        const fetchFilteredProducts = async () => {
+            const params = new URLSearchParams();
+
+            if (collection) params.append('category', collection);
+            if (price) params.append('maxPrice', price);
+            if (size) params.append('productSize', size);
+
+            const selectedTypes = Object.keys(types).filter(typeKey => types[typeKey]);
+            const typesString = selectedTypes.join(',');
+          
+
+            if (selectedTypes.length > 0) {
+                params.append('productType', typesString);
+
+            }
+            const url = `http://localhost:4000/api/products?${params.toString()}`;
+
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+                setListProducts(Array.isArray(data) ? data : []);
+            } catch (err) {
+                console.error(err);
+                setListProducts([]);
+            }
+
+
+        };
+
+        fetchFilteredProducts();
+    }, [collection, price, size, JSON.stringify(types)]);
+
+    const handleCategoryClick = (categoryName) => {
+        const newCategory = collection === categoryName ? '' : categoryName;
+        setCollection(newCategory);
+
+        if (newCategory) {
+            setSearchParams({ category: newCategory });
+        } else {
+            setSearchParams({});
+        }
+
+
+    };
 
     return (
         <main>
@@ -75,22 +96,21 @@ const ProductsCatalog = () => {
 
                             <div className={styles.collectionRoll}>
 
-                                <button onClick={() => setCollection(collection === "Kids" ? "" : "Kids")} className={styles.optRoll}>
+                                <button onClick={() => handleCategoryClick("Kids")} className={styles.optRoll}>
                                     <div className={styles.iconCollection}>
                                         <img src={BabyShirt} alt="" />
                                     </div>
                                     <p>Kid's</p>
                                 </button>
 
-                                <button onClick={() => setCollection(collection === "Woman" ? "" : "Woman")} className={styles.optRoll} >
+                                <button onClick={() => handleCategoryClick("Woman")} className={styles.optRoll} >
                                     <div className={styles.iconCollection}>
                                         <img src={Dress} alt="" />
                                     </div>
                                     <p>Woman's</p>
                                 </button>
 
-
-                                <button onClick={() => setCollection(collection === "Men's" ? "" : "Men's")} className={styles.optRoll}>
+                                <button onClick={() => handleCategoryClick("Men's")} className={styles.optRoll}>
                                     <div className={styles.iconCollection}>
                                         <img src={Suit} alt="" />
                                     </div>
@@ -98,7 +118,6 @@ const ProductsCatalog = () => {
                                 </button>
                             </div>
                         </div>
-
 
                         <div className={styles.filterType}>
                             <h3>Type</h3>
@@ -136,7 +155,7 @@ const ProductsCatalog = () => {
                                     <button
                                         key={s}
                                         className={`${styles.sizeButton} ${size === s ? styles.active : ''}`}
-                                        onClick={() => setSize(s)}
+                                        onClick={() => setSize(size === s ? '' : s)}
                                     >
                                         {s}
                                     </button>
@@ -156,15 +175,15 @@ const ProductsCatalog = () => {
                         </div>
 
                         <div className={styles.boxProducts}>
-                            {filteredProducts.length > 0 ? (
-                                filteredProducts.map((product) => (
+                            {listProducts.length > 0 ? (
+                                listProducts.map((product) => (
                                     <Product
                                         key={product._id}
                                         ProductName={product.prodName}
                                         productCategory={product.category}
                                         previousPrice={product.previousPrice || null}
                                         imgProduct={product.imageUrl}
-                                        ProductPrice={product.price}
+                                        ProductPrice={product.prodPrice}
                                         product={product}
                                     />
                                 ))
