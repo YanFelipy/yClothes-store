@@ -3,38 +3,38 @@ const Product = require('../models/product.model');
 const createProduct = async (req, res) => {
   try {
 
-    const { 
-      prodName, 
-      prodPrice, 
-      previousPrice, 
-      quantity, 
-      category, 
-      productType, 
-      productSize, 
-      imageUrl, 
-      galleryImages 
-    } = req.body;
-
-    const userId = req.user.id; 
-
- 
-    if (!prodName || !prodPrice || !category || !productType || !productSize || !imageUrl) {
-      return res.status(400).json({ 
-        errors: ["Campos obrigatórios faltando (nome, preço, categoria, tipo, tamanho ou imagem principal)."] 
-      });
-    }
-
-  
-    const newProduct = new Product({
+    const {
       prodName,
       prodPrice,
-      previousPrice, 
-      quantity,      
+      previousPrice,
+      quantity,
       category,
       productType,
       productSize,
       imageUrl,
-      galleryImages, 
+      galleryImages
+    } = req.body;
+
+    const userId = req.user.id;
+
+
+    if (!prodName || !prodPrice || !category || !productType || !productSize || !imageUrl) {
+      return res.status(400).json({
+        errors: ["Campos obrigatórios faltando (nome, preço, categoria, tipo, tamanho ou imagem principal)."]
+      });
+    }
+
+
+    const newProduct = new Product({
+      prodName,
+      prodPrice,
+      previousPrice,
+      quantity,
+      category,
+      productType,
+      productSize,
+      imageUrl,
+      galleryImages,
       userId
     });
 
@@ -52,13 +52,24 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    // Busca todos os produtos no banco, ordenando pelos mais novos (opcional)
-    const products = await Product.find({}).sort({ createdAt: -1 });
+    const { category, productType, productSize, maxPrice } = req.query;
 
+    let query = {};
+
+
+    if (category) query.category = category;
+    if (productType) query.productType = productType;
+    if (productSize) query.productSize = productSize;
+    if (maxPrice) query.prodPrice = { $lte: Number(maxPrice) };
+    if (productType) {
+      const typesArray = productType.split(',');
+      query.productType = { $in: typesArray };
+    }
+
+    const products = await Product.find(query);
     res.status(200).json(products);
-  } catch (err) {
-    console.error("Erro ao buscar produtos:", err);
-    res.status(500).json({ errors: ["Erro interno ao buscar produtos."] });
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar produtos", details: error.message });
   }
 };
 
@@ -82,7 +93,7 @@ const deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
 
-    
+
     console.log("ID recebido para deletar:", id)
 
     const product = await Product.findByIdAndDelete(id);
@@ -91,10 +102,10 @@ const deleteProduct = async (req, res) => {
       return res.status(404).json({ errors: ["Produto não encontrado."] });
     }
 
-res.status(200).json({ 
-      product, 
+    res.status(200).json({
+      product,
       message: "O produto foi deletado com sucesso."
-})
+    })
   } catch (err) {
     console.error("Erro ao buscar produto:", err);
     res.status(500).json({ errors: ["Erro interno ao deletar o produto."] });
@@ -105,7 +116,7 @@ res.status(200).json({
 const editProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     console.log("ID recebido para editar:", id)
 
     const updateData = req.body
@@ -116,10 +127,10 @@ const editProduct = async (req, res) => {
       return res.status(404).json({ errors: ["Produto não encontrado."] });
     }
 
-res.status(200).json({ 
-      product, 
+    res.status(200).json({
+      product,
       message: "O produto foi editado com sucesso."
-})
+    })
   } catch (err) {
     console.error("Erro ao buscar produto:", err);
     res.status(500).json({ errors: ["Erro interno ao editar o produto."] });
@@ -127,4 +138,4 @@ res.status(200).json({
 }
 
 
-module.exports = { createProduct, getAllProducts, getProductById, deleteProduct, editProduct};
+module.exports = { createProduct, getAllProducts, getProductById, deleteProduct, editProduct };
