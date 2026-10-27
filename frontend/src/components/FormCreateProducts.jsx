@@ -193,7 +193,7 @@ const FormCreateProducts = () => {
             <div className={styles.triLabel}>
               <label>
                 <span className={styles.inputName}><span className={styles.asteristic}>*</span> Product Price :</span>
-                <input type="number" inputMode="decimal" minLength={3} pattern="^\d+\.\d{2}$" placeholder='Price' required value={prodPrice} pattern="^\d+\.\d{2}$" min={0.00} max={1000.00} step={0.01} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
+                <input type="number" inputMode="decimal" minLength={3} pattern="^\d+\.\d{2}$" placeholder='Price' required value={prodPrice} min={0.00} max={1000.00} step={0.01} maxLength={10} onChange={(e) => setProdPrice(e.target.value)} />
               </label>
 
               <label>

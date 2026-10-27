@@ -143,7 +143,6 @@ const FormEditProducts = ({ selProduct }) => {
 
         galleryUrls = newUploads
 
-
       }
 
 

@@ -81,7 +81,7 @@ const Homepage = () => {
       
   </div>
 </div>
-<div className={styles.womanc}>
+<Link  to={"/collections?category=Woman"} className={styles.womanc}>
     <div className={styles.name_category}>
     <h2>
       Woman's
@@ -91,9 +91,9 @@ const Homepage = () => {
       </span> 
       
   </div>
-  </div>
+  </Link>
 
-<Link to={"/collections"} className={styles.mensc}>
+<Link to={"/collections?category=Men's"} className={styles.mensc}>
 <div>
      <div className={styles.name_category}>
     <h2>
