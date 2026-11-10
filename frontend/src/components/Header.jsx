@@ -37,15 +37,21 @@ const Header = () => {
                 </div>
                 <ul className={styles.ulcategories}>
                     <li>
-                        <a href="">MEN</a>
+                        <Link to={"/collections?category=Men's"}>
+                        MEN 
+                        </Link>
                     </li>
 
                     <li>
-                        <a href="">WOMEN</a>
+                     <Link to={"/collections?category=Woman"}>
+                        WOMAN 
+                        </Link>
                     </li>
 
                     <li>
-                        <a href="">KIDS</a>
+                       <Link to={"/collections?category=Kids"}>
+                        KIDS
+                        </Link>
                     </li>
                 </ul>
                 <div className={styles.search_box}>
