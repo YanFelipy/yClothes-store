@@ -38,12 +38,7 @@ export default function BasicMenu() {
 
     const Logout = () => {
         logout()
-
-        if (user == null && localStorage.token == null) {
-            navigate("/");
-        } else {
-            console.log("Erro ao fazer logout")
-        }
+        navigate("/");
     }
 
     return (
