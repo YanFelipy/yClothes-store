@@ -26,8 +26,8 @@ const navigate = useNavigate()
     const { showSuccess, showError } = useToast();
 
     //states from form
-    const { register, handleSubmit,
-        formState: { errors } } = useForm({ resolver: yupResolver(userLoginSchema) });
+    const { register, handleSubmit, reset,
+        formState: { errors,  } } = useForm({ resolver: yupResolver(userLoginSchema) });
 
     //open modal and close modal
     const { isLoginOpen, closeLogin, openRegister } = useModals();
@@ -70,6 +70,7 @@ const navigate = useNavigate()
             if (response.ok ) {
                showSuccess(resData && resData.message)
                 closeLogin()
+                reset();
                  navigate("/");
             }
 
