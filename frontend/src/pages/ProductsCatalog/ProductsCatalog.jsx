@@ -6,7 +6,6 @@ import styles from './ProductsCatalog.module.css'
 //hooks
 import { useSearchParams } from 'react-router-dom'
 
-
 //components
 import Product from '../../components/Product.jsx'
 
@@ -19,17 +18,25 @@ const ProductsCatalog = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const categoryFromUrl = searchParams.get('category') || '';
+      const searchQURL = searchParams.get('q' || '')
 
-    const [types, setTypes] = useState({ Shoes: true, Shirts: true, Pants: true, Hats: true });
+    const [types, setTypes] = useState({ Shoes: false, Shirts: false, Pants: false, Hats: false });
     const [price, setPrice] = useState(500);
     const [size, setSize] = useState('');
+
     const [collection, setCollection] = useState(categoryFromUrl);
+    const [searchQuery, setSearchQuery] = useState(searchQURL);
+
     const [listProducts, setListProducts] = useState([]);
 
     useEffect(() => {
         const category = searchParams.get('category');
+        const q = searchParams.get('q');
         setCollection(category || '');
+        setSearchQuery(q || '');
     }, [searchParams]);
+
+   
 
     useEffect(() => {
         const fetchFilteredProducts = async () => {
@@ -38,6 +45,7 @@ const ProductsCatalog = () => {
             if (collection) params.append('category', collection);
             if (price) params.append('maxPrice', price);
             if (size) params.append('productSize', size);
+           if (searchQuery) params.append('q', searchQuery);
 
             const selectedTypes = Object.keys(types).filter(typeKey => types[typeKey]);
             const typesString = selectedTypes.join(',');
@@ -62,17 +70,19 @@ const ProductsCatalog = () => {
         };
 
         fetchFilteredProducts();
-    }, [collection, price, size, JSON.stringify(types)]);
+    }, [collection, price, size, searchQuery, JSON.stringify(types)]);
 
     const handleCategoryClick = (categoryName) => {
         const newCategory = collection === categoryName ? '' : categoryName;
         setCollection(newCategory);
 
-        if (newCategory) {
-            setSearchParams({ category: newCategory });
-        } else {
-            setSearchParams({});
-        }
+        const currentQ = searchParams.get('q');
+
+const newParams = {};
+        if (newCategory) newParams.category = newCategory;
+        if (currentQ) newParams.q = currentQ;
+
+        setSearchParams(newParams)
 
 
     };
@@ -171,7 +181,9 @@ const ProductsCatalog = () => {
                     <div className={styles.showProducts}>
                         <div className={styles.introShowProducts}>
                             <h2>{collection ? `${collection} Category` : 'All Categories'}</h2>
-                            <p>Showing: {collection ? collection : 'All Products'}</p>
+                            <p>Showing:
+                                 {collection ? collection  : `All Products ${searchQuery && `with "${searchQuery}"`}` }
+                                 </p>
                         </div>
 
                         <div className={styles.boxProducts}>

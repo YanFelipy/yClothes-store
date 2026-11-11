@@ -1,11 +1,24 @@
 import styles from './Search.module.css'
+import { useNavigate } from 'react-router'
+import { useState } from 'react'
 
 const Search = () => {
+
+    const navigate = useNavigate()
+
+  const [query, setQuery] = useState("")
+
+   const handleSubmitSearch = (e) => {
+ if (query) {
+      return navigate(`/collections?q=${query}`, setQuery(""))
+    }
+   }
+
   return (
         <div className={styles.field_search}>
-          <input  type='text' name='query'   />
+          <input  type='text' name='query' value={query} onChange={(e) => setQuery(e.target.value)} />
           <div className={styles.svg_search}>
-            <button >
+            <button onClick={handleSubmitSearch} >
               <svg width="30px" height="30px"
                 viewBox="-8.32 -8.32 48.64 48.64" version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
