@@ -52,12 +52,12 @@ const createProduct = async (req, res) => {
 
 const getAllProducts = async (req, res) => {
   try {
-    const { category, productType, productSize, maxPrice } = req.query;
+    const { category, productType, productSize, maxPrice, q } = req.query;
 
     let query = {};
 
-
     if (category) query.category = category;
+    if (q) { query.prodName = { $regex: q, $options: 'i' }; }
     if (productType) query.productType = productType;
     if (productSize) query.productSize = productSize;
     if (maxPrice) query.prodPrice = { $lte: Number(maxPrice) };
